@@ -742,10 +742,42 @@ Bu fonksiyon, başında veya sonunda belirli bir karakter kümesi bulunan bir di
 
 Örnek Kod:
 ```c
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	size_t	j;
+	char	*final;
 
+	if (s)
+	{
+		if (start >= ft_strlen(s) || len == 0 || ft_strlen(s) == 0)
+			return (ft_strdup(""));
+		i = 0;
+		while (i < len && s[i + start] != '\0')
+			i++;
+		final = (char *) malloc((sizeof(char) * i) + 1);
+		if (!(final))
+			return (NULL);
+		j = 0;
+		while (j < i)
+		{
+			final[j] = s[start + j];
+			j++;
+		}
+		final[j] = '\0';
+		return (final);
+	}
+	return (NULL);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, verilen bir başlangıç indeksi ve uzunluk değeriyle bir dizeden yeni bir alt dize oluşturur. İlk parametre olan s, işlem yapılacak olan giriş dizgisidir. İkinci parametre olan start, oluşturulacak alt dizinin başlangıç indeksini belirtir. Üçüncü parametre olan len, oluşturulacak alt dizenin uzunluğunu belirtir.
+</p>
+<p align="left">
+Fonksiyon, başlangıç indeksinden başlayarak belirtilen uzunlukta olan karakterleri içeren yeni bir diziyi oluşturur. Eğer başlangıç indeksi geçerli değilse veya belirtilen uzunlukta karakter bulunmuyorsa veya giriş dizisi NULL ise, boş bir dize döndürülür.
+</p>
+<p align="left">
+İlk olarak, giriş dizisinin uzunluğu kontrol edilir ve başlangıç indeksi uygun bir aralıkta mı diye kontrol edilir. Sonrasında, belirtilen uzunluktaki karakterleri içerecek kadar bellek tahsis edilir ve bu karakterler yeni diziye kopyalanır. Son olarak, oluşturulan alt dizeyi içeren yeni dizi dönüş değeri olarak verilir. Eğer giriş dizisi NULL ise, NULL dönüş değeri verilir.
 </p>
 
 - **ft_split**: Belirtilen ayırıcı karaktere göre bir dizeyi bölüp bir dize dizisi oluşturur.
@@ -756,10 +788,91 @@ Bu fonksiyon, başında veya sonunda belirli bir karakter kümesi bulunan bir di
 
 Örnek Kod:
 ```c
+static unsigned int	ft_word_counter(const char *s, char control)
+{
+	unsigned int	word;
 
+	word = 0;
+	while (*s)
+	{
+		if (*s == control)
+			s++;
+		else
+		{
+			while (*s != control && *s)
+				s++;
+			word++;
+		}
+	}
+	return (word);
+}
+
+static unsigned int	ft_charlen(const char *s, char c)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	return (i);
+}
+
+char	**free_all(char **result)
+{
+	int	i;
+
+	i = 0;
+	while (result[i])
+	{
+		free(result[i]);
+		i++;
+	}
+	free(result);
+	return (NULL);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char			**arr;
+	unsigned int	j;
+	unsigned int	a;
+
+	arr = (char **)malloc((ft_word_counter(s, c) + 1) * sizeof(char *));
+	if (!arr)
+		return (NULL);
+	a = -1;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (*s)
+		{
+			arr[++a] = (char *)malloc((ft_charlen(s, c) + 1) * sizeof(char));
+			if (!arr[a])
+				return (free_all(arr));
+			j = 0;
+			while (*s && *s != c)
+				arr[a][j++] = *s++;
+			arr[a][j] = '\0';
+		}
+	}
+	arr[++a] = NULL;
+	return (arr);
+}
 ```
 <p align="left">
+Bu kod, verilen bir dizedeki kelimeleri belirli bir ayırıcı karaktere göre parçalara ayıran ft_split fonksiyonunu gerçekleştirir.
 
+- **ft_word_counter**: Bu fonksiyon, verilen bir dizedeki kelime sayısını belirler. Dize üzerinde dolaşarak ayırıcı karakteri geçer ve her kelimeyi bulurken kelime sayısını artırır.
+
+- **ft_charlen**: Belirli bir karaktere kadar olan karakterlerin uzunluğunu hesaplar. Dizge içinde belirli bir karaktere kadar olan karakter sayısını bulur.
+
+- **free_all**: Bellekte dinamik olarak tahsis edilen belleği serbest bırakmak için kullanılır. Bu fonksiyon, ft_split fonksiyonu içinde bellek tahsis edilirken oluşabilecek hataları kontrol etmek için çağrılır.
+
+- **ft_split**: Ana fonksiyon, verilen bir dizedeki kelimeleri belirtilen ayırıcı karaktere göre parçalara böler. Bellekte parçaları tutmak için gerekli alanı tahsis eder ve ardından dizeyi ayırırken bu alanı doldurur. Son olarak, parçaları içeren bir dizi döndürür.
+</p>
+<p align="left">
+Yani kısaca, bir dizedeki kelimeleri belirli bir ayırıcı karaktere göre parçalara böler. Dize içindeki her kelimeyi ayrıştırır ve ayrıca bellekte her bir kelime için ayrılan hafızayı serbest bırakır. Son olarak, parçalanmış kelimeleri içeren bir dizi döndürür.
 </p>
 
 - **ft_tolower**: Bir karakteri küçük harfe dönüştürür.
@@ -769,10 +882,15 @@ Bu fonksiyon, başında veya sonunda belirli bir karakter kümesi bulunan bir di
 
 Örnek Kod:
 ```c
-
+int	ft_tolower(int c)
+{
+	if (c >= 65 && c <= 90)
+		return (c + 32);
+	return (c);
+}
 ```
 <p align="left">
-
+Bu kod, verilen bir karakteri küçük harfe dönüştürmek için kullanılır. Fonksiyon, verilen karakterin ASCII değerini kontrol eder. Eğer verilen karakter büyük bir harfse (ASCII değeri 65 ile 90 arasında ise), küçük harfe dönüştürmek için ASCII değerine 32 ekler. Aksi halde, karakteri olduğu gibi geri döndürür. Bu işlem sonucunda dönüştürülen karakterin ASCII değeri, küçük harfe karşılık gelen ASCII değeri olur.
 </p>
 
 - **ft_toupper**: Bir karakteri büyük harfe dönüştürür.
@@ -782,10 +900,15 @@ Bu fonksiyon, başında veya sonunda belirli bir karakter kümesi bulunan bir di
 
 Örnek Kod:
 ```c
-
+int	ft_toupper(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
+}
 ```
 <p align="left">
-
+Bu kod, verilen bir karakteri büyük harfe dönüştürmek için kullanılır. Fonksiyon, verilen karakterin ASCII değerini kontrol eder. Eğer verilen karakter küçük bir harfse (ASCII değeri 'a' ile 'z' arasında ise), büyük harfe dönüştürmek için ASCII değerinden 32 çıkarır. Aksi halde, karakteri olduğu gibi geri döndürür. Bu işlem sonucunda dönüştürülen karakterin ASCII değeri, büyük harfe karşılık gelen ASCII değeri olur.
 </p>
 
 ### Karakter İşlemleri
