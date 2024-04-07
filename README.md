@@ -194,7 +194,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 }
 ```
 <p align="left">
-Fonksiyon, bellek bloğunda n byte boyunca dolaşarak c karakterini arar. Her bir byte üzerinde dolaşırken, aranan karakter bulunursa, bulunan karakterin adresini döndürür. Eğer karakter bulunamazsa NULL işaretini döndürür.
+Bu fonksiyon, bellek bloğunda n byte boyunca dolaşarak c karakterini arar. Her bir byte üzerinde dolaşırken, aranan karakter bulunursa, bulunan karakterin adresini döndürür. Eğer karakter bulunamazsa NULL işaretini döndürür.
 </p>
 
 - **ft_memcmp**: İki bellek bloğunu karşılaştırır.
@@ -206,10 +206,26 @@ Fonksiyon, bellek bloğunda n byte boyunca dolaşarak c karakterini arar. Her bi
 
 Örnek Kod:
 ```c
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	const unsigned char	*s1_uc;
+	const unsigned char	*s2_uc;
+	size_t				index;
 
+	index = 0;
+	s1_uc = (const unsigned char *)s1;
+	s2_uc = (const unsigned char *)s2;
+	while (index < n)
+	{
+		if (s1_uc[index] != s2_uc[index])
+			return (s1_uc[index] - s2_uc[index]);
+		index++;
+	}
+	return (0);
+}
 ```
 <p align="left">
-
+Bu fonksiyon iki bellek bloğunu byte olarak karşılaştırır. İki bellek bloğunun karşılaştırılması sırasında, bellek bloklarındaki her bir byte'ın değeri diğer bellek bloğundaki karşılık gelen byte'ın değeriyle karşılaştırılır. Eğer iki byte birbirinden farklıysa, bu iki byte'nin farkını döndürür. Eğer tüm byte'lar eşit ise, 0 değerini döndürür. Bu şekilde, bellek bloklarının içeriğinin tam olarak aynı olup olmadığına göre karşılaştırma yapar.
 </p>
 
 ### Dize İşlemleri
