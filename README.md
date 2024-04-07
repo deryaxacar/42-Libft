@@ -442,6 +442,25 @@ calloc, bellek tahsis etmek için kullanılan bir işlevdir. "Calloc" kelimesi "
 Tip dönüşümü veya type casting, bir veri türünün diğerine dönüştürülmesi işlemidir. Bu işlem, bir değişkenin veri türünü değiştirmek veya bir ifade veya değerin beklenen veri türüne dönüştürmek için yapılır. Örneğin, bir tamsayıyı ondalık sayıya dönüştürmek veya bir karakter dizisini tamsayıya dönüştürmek gibi durumlar tip dönüşümü gerektirir. Tip dönüşümü, programcının veri türlerini uygun şekilde işlemesini sağlar ve veri türü uyumsuzluklarını giderir.
 </p>
 
+Örnek Kod:
+```c
+#include <stdio.h>
+
+int main() {
+    int a = 10;
+    double b;
+
+    // int tipindeki a değişkenini double tipine dönüştürerek b'ye atadık
+    b = (double)a;
+
+    printf("a: %d\n", a);
+    printf("b: %.2f\n", b);
+
+    return 0;
+}
+
+```
+
 ### Open Fonksiyonu Nedir? 
 <p align="left">
 open fonksiyonu, dosya sisteminden belirtilen dosyayı açmak için kullanılan bir POSIX işlevidir. Bu işlev, bir dosyanın okunması, yazılması veya hem okunup hem yazılması gibi farklı modlarda açılmasını sağlar. Dosya zaten açıksa var olan dosyayı çağırır. örnek kod:
