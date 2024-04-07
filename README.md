@@ -584,8 +584,9 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 ```
 <p align="left">
 Bu fonksiyon, bir karakter dizisindeki her karakter üzerinde belirtilen işlemi gerçekleştirir. İşlem, her karakterin konumu ve adresi üzerinde bir işlevin çağrılmasıyla gerçekleştirilir. Fonksiyon, karakter dizisinin her bir elemanını işlemek için bir döngü kullanır. Döngü her adımda işlevi (f) çağırarak karakterin dizideki konumunu ve adresini ileterek işlemi gerçekleştirir. Bu işlem, karakter dizisinin sonuna kadar devam eder.
-not: örnek olarak dışarıdan tolower fonksiyonunu girelim ve stringdeki tüm harflere teker teker yazdırma işlemi uygulasın.
 </p>
+
+örnek olarak dışarıdan yazdırma fonksiyonu ve bir string girelim.
 
 ```c
 #include <stdio.h>
