@@ -437,7 +437,7 @@ int main() {
 calloc, bellek tahsis etmek için kullanılan bir işlevdir. "Calloc" kelimesi "continuous allocation" kelimelerinin kısaltmasıdır. calloc, bellek tahsis etmek için malloc işlevi gibi kullanılır, ancak farklı olarak ayrılan belleği sıfırlar, yani tüm byte'ları sıfır değeriyle doldurur.
 </p>
 
-### Type Casting (Tüp Dönüşümü) Nedir?
+### Type Casting (Tür Dönüşümü) Nedir?
 <p align="left">
 Tip dönüşümü veya type casting, bir veri türünün diğerine dönüştürülmesi işlemidir. Bu işlem, bir değişkenin veri türünü değiştirmek veya bir ifade veya değerin beklenen veri türüne dönüştürmek için yapılır. Örneğin, bir tamsayıyı ondalık sayıya dönüştürmek veya bir karakter dizisini tamsayıya dönüştürmek gibi durumlar tip dönüşümü gerektirir. Tip dönüşümü, programcının veri türlerini uygun şekilde işlemesini sağlar ve veri türü uyumsuzluklarını giderir.
 </p>
