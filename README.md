@@ -353,10 +353,22 @@ Bu kod, bir karakter dizisinde belirli bir karakterin ilk bulunduğu konumu bulm
 
 Örnek Kod:
 ```c
+char	*ft_strrchr(const char *s, int c)
+{
+	int		i;
 
+	i = ft_strlen(s);
+	while (i >= 0)
+	{
+		if (s[i] == (unsigned char)c)
+			return ((char *)s + i);
+		i--;
+	}
+	return (NULL);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, bir karakter dizisinde (s) sağdan sola doğru bir karakter arar. Karakter dizisi içindeki son bulunan belirli bir karakterin adresini döndürür. Eğer karakter bulunamazsa NULL değeri döner.
 </p>
 
 - **ft_strnstr**: Bir alt dizenin bir dizideki pozisyonunu bulur.
@@ -368,10 +380,31 @@ Bu kod, bir karakter dizisinde belirli bir karakterin ilk bulunduğu konumu bulm
 
 Örnek Kod:
 ```c
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	const char	*h;
+	const char	*n;
+	size_t		counter;
 
+	if (!needle[0])
+		return ((char *)haystack);
+	while (*haystack && len > 0)
+	{
+		h = haystack;
+		n = needle;
+		counter = 0;
+		while (n[counter] == h[counter] && n[counter] && len - counter > 0)
+			counter++;
+		if (n[counter] == '\0')
+			return ((char *) haystack);
+		len--;
+		haystack++;
+	}
+	return (NULL);
+}
 ```
 <p align="left">
-
+Bu kod, bir ana dizede (haystack) belirli bir alt dizenin (needle) ilk bulunduğu konumu aramak için kullanılır. İki dize arasında dolaşarak, alt dizenin ilk karakterini bulduğunda, alt dizenin tamamının ana dizede bulunup bulunmadığını kontrol eder. Eğer alt dize bulunursa, bulunduğu konumu işaret eden bir adres döndürür. Eğer alt dize bulunmazsa veya aramaya devam edilecek karakter sayısı (len) sıfıra ulaşırsa, NULL değeri döndürür.
 </p>
 
 - **ft_strncmp**: İki dizeyi belirli bir sayıda karakterle karşılaştırır.
@@ -383,10 +416,22 @@ Bu kod, bir karakter dizisinde belirli bir karakterin ilk bulunduğu konumu bulm
 
 Örnek Kod:
 ```c
+int	ft_strncmp(const char *s1, const char *s2, size_t size)
+{
+	size_t	i;
 
+	i = 0;
+	while (i < size && (s1[i] != '\0' || s2[i] != '\0'))
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, iki dizeyi belirli bir boyutta karşılaştırır. İki dize arasında karakter karşılaştırması yapar ve eşit olmayan bir karakter bulduğunda, bu karakterlerin ASCII değerlerinin farkını döndürür. Eğer iki dize belirtilen boyutta aynıysa, yani hiçbir karakter farklı değilse veya boyut sınırına ulaşılırsa, 0 değerini döndürür.
 </p>
 
 - **ft_atoi**: Bir diziyi bir tam sayıya dönüştürür.
@@ -396,10 +441,36 @@ Bu kod, bir karakter dizisinde belirli bir karakterin ilk bulunduğu konumu bulm
 
 Örnek Kod:
 ```c
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	sign;
+	int	container;
 
+	i = 0;
+	sign = 1;
+	container = 0;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (str[i])
+	{
+		if (!(ft_isdigit(str[i])))
+			return (container * sign);
+		else
+			container = container * 10 + (const char ) str[i] - 48;
+		i++;
+	}
+	return (container * sign);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, bir karakter dizisini (string) tam sayıya dönüştürür. Dizideki karakterleri taramak suretiyle sayısal değeri bulur ve bu değeri döndürür. Fonksiyon, boşlukları ve tab karakterlerini (ASCII değerleri 9 ile 13 arasındaki karakterler) görmezden gelir. Eğer dize başında negatif (-) veya pozitif (+) işareti varsa, bunu dikkate alarak dönüşü yapar. Ancak, dize içerisindeki karakterlerin bir sayıyı ifade etmediği durumda (örneğin, bir harf ya da özel karakter), dönüşüme son verir ve o ana kadar elde edilen değeri döndürür.
 </p>
 
 - **ft_itoa**: Bir tam sayıyı bir dizgiye dönüştürür.
@@ -409,11 +480,55 @@ Bu kod, bir karakter dizisinde belirli bir karakterin ilk bulunduğu konumu bulm
 
 Örnek Kod:
 ```c
+static int	ft_string_leng(int num)
+{
+	int	i;
 
+	if (num == 0)
+		return (1);
+	i = 0;
+	while (num > 0 || num < 0)
+	{
+		num /= 10;
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	int		len;
+	char	*str;
+	long	nbr;
+
+	nbr = n;
+	len = ft_string_leng(nbr);
+	if (n < 0)
+	{
+		len++;
+		nbr *= -1;
+	}
+	str = malloc(sizeof(char) * len + 1);
+	if (!str)
+		return (NULL);
+	str[len] = '\0';
+	while (nbr > 0)
+	{
+		str[--len] = (nbr % 10) + 48;
+		nbr /= 10;
+	}
+	if (n < 0)
+		str[0] = '-';
+	if (n == 0)
+		str[0] = '0';
+	return (str);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, bir tamsayıyı karakter dizisine (string) dönüştürür. İlk olarak, tamsayının uzunluğunu belirlemek için ft_string_leng fonksiyonunu kullanır. Daha sonra, tamsayının negatif olup olmadığını kontrol eder ve gerektiğinde işaret karakterini ekler. Ardından, karakter dizisi için gerekli bellek alanını (malloc) ayırır. Tamsayının her basamağını sağdan sola doğru dönüştürerek karakter dizisine ekler. Son olarak, oluşturulan karakter dizisini döndürür.
 </p>
+
+[Notlar](#notlar) kısmından static ile ilgili daha fazla bilgi edinebilirsiniz.
 
 - **ft_strdup**: Bir dizinin kopyasını yapar.
   - Prototip: `char *ft_strdup(const char *s);`
@@ -909,6 +1024,17 @@ int main() {
 }
 
 ```
+### Static Nedir? 
+<p align="left">
+"static" kelimesi, bir değişkenin veya fonksiyonun programın çalışma süresi boyunca sabit bir bellek konumuna sahip olduğunu belirtmek için kullanılan bir anahtar kelimedir.
+</p>
+<p align="left">
+Bir değişken "static" olarak tanımlandığında, bu değişken global kapsamda tanımlanır, yani tanımlandığı dosyanın dışında erişilemez. Ayrıca, "static" olarak tanımlanan bir değişkenin ömrü, programın başlangıcından sonuna kadar devam eder ve bellekteki konumu sabittir.
+</p>
+<p align="left">
+Bir fonksiyon "static" olarak tanımlandığında, bu fonksiyon yalnızca tanımlandığı dosyanın içinde erişilebilir. Başka bir dosyadan bu fonksiyona erişilemez. Bu şekilde, fonksiyonun kapsamı sınırlanmış olur ve kodun daha modüler hale gelmesine yardımcı olur.
+</p>
+
 
 ### Open Fonksiyonu Nedir? 
 <p align="left">
