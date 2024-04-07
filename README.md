@@ -114,6 +114,29 @@ Açıklama: Belirtilen boyutta bir bellek bloğu tahsis eder ve tüm alanların�
   - `n`: Kopyalanacak byte sayısı.
   - Dönüş Değeri: Hedef adresi içeren bir işaretçi (dest).
 
+Örnek Kod:
+```c
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t	i;
+
+	if (!dst && !src)
+		return (0);
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		i++;
+	}
+	return (dst);
+}
+```
+<p align="left">
+Açıklama: İlk olarak, hedef (dst) ve kaynak (src) bellek bloklarının adresleri ve kopyalanacak byte sayısı (n) alınır. Ardından, src bloğundaki her bir byte, dst bloğuna kopyalanır. Son olarak, dst bloğunun adresi döndürülür. Bu fonksiyonda öncekilerden farklı olarak
+</p>
+
+Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşümü) bulunmakta [Notlar](#notlar) kısmından type casting ile ilgili daha fazla bilgi edinebilirsiniz.
+
 - **ft_memmove**: Bellek bloğunu güvenli bir şekilde kopyalar.
   - Prototip: `void *ft_memmove(void *dest, const void *src, size_t n);`
   - `dest`: Kopyalanan verinin hedef adresi.
@@ -412,6 +435,11 @@ int main() {
 ### Calloc Nedir?
 <p align="left">
 calloc, bellek tahsis etmek için kullanılan bir işlevdir. "Calloc" kelimesi "continuous allocation" kelimelerinin kısaltmasıdır. calloc, bellek tahsis etmek için malloc işlevi gibi kullanılır, ancak farklı olarak ayrılan belleği sıfırlar, yani tüm byte'ları sıfır değeriyle doldurur.
+</p>
+
+### Type Casting (Tüp Dönüşümü) Nedir?
+<p align="left">
+Tip dönüşümü veya type casting, bir veri türünün diğerine dönüştürülmesi işlemidir. Bu işlem, bir değişkenin veri türünü değiştirmek veya bir ifade veya değerin beklenen veri türüne dönüştürmek için yapılır. Örneğin, bir tamsayıyı ondalık sayıya dönüştürmek veya bir karakter dizisini tamsayıya dönüştürmek gibi durumlar tip dönüşümü gerektirir. Tip dönüşümü, programcının veri türlerini uygun şekilde işlemesini sağlar ve veri türü uyumsuzluklarını giderir.
 </p>
 
 ### Open Fonksiyonu Nedir? 
