@@ -617,10 +617,35 @@ mainde bir string oluşturduk (str) yukarıda da yazdırma fonksiyonumuz var (pr
 
 Örnek Kod:
 ```c
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char			*str;
+	unsigned int	leng;
+	unsigned int	i;
 
+	i = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	leng = ft_strlen(s1) + ft_strlen(s2);
+	str = malloc(sizeof(char) * (leng + 1));
+	if (!str)
+		return (NULL);
+	while (*s1)
+	{
+		str[i] = *s1++;
+		i++;
+	}
+	while (*s2)
+	{
+		str[i] = *s2++;
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, verilen iki dizgiyi birleştirerek yeni bir dizi oluşturur. İlk olarak, birleştirilecek dizgilerin uzunlukları hesaplanır. Daha sonra, toplam uzunluk kadar bellek tahsis edilir ve bu belleğe ilk dizgi kopyalanır. Ardından, ikinci dizgi de kopyalanır ve sonuna '\0' (NULL karakteri) eklenerek yeni birleştirilmiş dizgi oluşturulur. Oluşturulan bu yeni dizgi bellek bloğunun adresi ile geri döndürülür. Eğer gerekli bellek tahsis edilemezse veya herhangi bir dizi NULL ise, NULL değeri döndürülür.
 </p>
 
 - **ft_strmapi**: Bir dizenin her karakteri üzerinde belirtilen işlemi gerçekleştirir.
@@ -631,10 +656,28 @@ mainde bir string oluşturduk (str) yukarıda da yazdırma fonksiyonumuz var (pr
 
 Örnek Kod:
 ```c
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char			*str;
+	unsigned int	i;
 
+	if (!s)
+		return (NULL);
+	str = (char *)malloc(ft_strlen(s) + 1);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, verilen bir girdi dizgisinde her bir karakter üzerinde belirli bir işlemi gerçekleştiren ve sonucunu yeni bir diziye yerleştiren işlevi ifade eder. Fonksiyon, iki parametre alır: birinci parametre, işlem yapılacak olan giriş dizgisidir; ikinci parametre ise, işlemin nasıl gerçekleştirileceğini belirleyen bir işlev göstericisidir. İşlev, giriş dizgisi üzerinde döngü kullanarak her bir karakter için belirtilen işlevi çağırır ve işlevin dönüş değerlerini yeni bir diziye yerleştirir. Son olarak, işlenmiş dizgi, işlevin sonucu olarak döndürülür. Eğer giriş dizgisi NULL ise veya bellek tahsis edilemezse, NULL dönüş değeri verilir.
 </p>
 
 - **ft_strtrim**: Bir dizenin başındaki ve sonundaki belirli karakterleri kaldırır.
@@ -645,10 +688,49 @@ mainde bir string oluşturduk (str) yukarıda da yazdırma fonksiyonumuz var (pr
 
 Örnek Kod:
 ```c
+static int	ft_checkset(char c, char const *set)
+{
+	size_t	i;
 
+	i = 0;
+	while (set[i])
+	{
+		if (set[i++] == c)
+			return (1);
+	}
+	return (0);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	char	*m;
+	size_t	start;
+	size_t	end;
+	size_t	i;
+
+	if (!s1 || !set)
+		return (NULL);
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && ft_checkset(s1[start], set))
+		start++;
+	while (end > start && ft_checkset(s1[end - 1], set))
+		end--;
+	m = (char *)malloc(sizeof(char) * (end - start) + 1);
+	if (!m)
+		return (NULL);
+	i = 0;
+	while (start < end)
+		m[i++] = s1[start++];
+	m[i] = '\0';
+	return (m);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, başında veya sonunda belirli bir karakter kümesi bulunan bir dizeden bu karakterleri kaldıran bir işlemi gerçekleştirir. İlk parametre olan s1, işlem yapılacak olan giriş dizgisidir. İkinci parametre olan set, kaldırılacak karakter kümesini belirtir. Fonksiyon, giriş dizgisinin başından ve sonundan belirtilen karakter kümesini kaldırır ve sonucu yeni bir diziye yerleştirir. Ardından, bu yeni dizi işlevin dönüş değeri olarak döndürülür.
+</p>
+<p align="left">
+İlk olarak, giriş dizgisinin başındaki ve sonundaki karakter kümesi geçen kısımlar tespit edilir ve bu bölgelerin başlangıç ve bitiş indeksleri hesaplanır. Sonrasında, başlangıç ve bitiş indeksleri arasındaki kısmı kopyalamak için bellek tahsis edilir ve bu kısmın içine giriş dizgisinin sadece istenilen kısımları kopyalanır. Son olarak, yeni dizi oluşturulur ve işlenmiş dizgi bu diziye kopyalanır. Eğer giriş dizgisi veya karakter kümesi NULL ise, NULL dönüş değeri verilir.
 </p>
 
 - **ft_substr**: Bir alt dize oluşturur.
