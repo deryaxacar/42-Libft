@@ -237,10 +237,23 @@ Bu fonksiyon iki bellek bloğunu byte olarak karşılaştırır. İki bellek blo
 
 Örnek Kod:
 ```c
+size_t	ft_strlen(const char *s)
+{
+	int	leng;
+	int	i;
 
+	i = 0;
+	leng = 0;
+	while (s[i] != '\0')
+	{
+		leng++;
+		i++;
+	}
+	return (leng);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, verilen bir dizinin uzunluğunu hesaplar. Dizi içerisindeki karakterlerin her birini dolaşarak, dizinin sonunda '\0' (NULL) karakterini bulana kadar karakter sayısını hesaplar ve bu sayıyı döndürür.
 </p>
 
 - **ft_strlcpy**: Bir dizenin bir başka diziye güvenli bir şekilde kopyalanması.
@@ -252,10 +265,27 @@ Bu fonksiyon iki bellek bloğunu byte olarak karşılaştırır. İki bellek blo
 
 Örnek Kod:
 ```c
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	counter;
 
+	counter = 0;
+	if (size > 0)
+	{
+		while ((size - 1) > counter && src[counter])
+		{
+			dst[counter] = src[counter];
+			counter++;
+		}
+		dst[counter] = '\0';
+	}
+	while (src[counter])
+		counter++;
+	return (counter);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, bir kaynak dizinin içeriğini, belirtilen hedef diziye, belirtilen boyutta kopyalar. Ancak, kopyalama işlemi, hedef dizinin kapasitesini aşmaması için belirli bir boyut sınırlamasına tabidir. Kopyalama işlemi sırasında, kaynak dizideki karakterler hedef diziye kopyalanır ve sonuna '\0' (NULL) karakteri eklenerek dizinin sonlandırılması sağlanır. Son olarak, kaynak dizinin toplam uzunluğu hesaplanarak döndürülür.
 </p>
 
 - **ft_strlcat**: Bir dizenin bir başka dizeye güvenli bir şekilde eklenmesi.
@@ -267,10 +297,29 @@ Bu fonksiyon iki bellek bloğunu byte olarak karşılaştırır. İki bellek blo
 
 Örnek Kod:
 ```c
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
+{
+	size_t	leng;
+	size_t	counter;
 
+	counter = 0;
+	leng = ft_strlen(dest);
+	if (size - 1 > leng && size > 0)
+	{
+		while (src[counter] != '\0' && size - 1 > leng + counter)
+		{
+			dest[counter + leng] = src[counter];
+			counter++;
+		}
+		dest[leng + counter] = 0;
+	}
+	if (leng >= size)
+		leng = size;
+	return (leng + ft_strlen(src));
+}
 ```
 <p align="left">
-
+Bu fonksiyon, bir hedef diziye (dest) bir kaynak dizinin (src) içeriğini eklemek için kullanılır. Ancak, hedef dizinin belirli bir boyutunu (size) aşmaması için kontrol edilir. Fonksiyon, hedef dizinin içeriğini ölçer (leng) ve hedef dizinin mevcut uzunluğu ile eklemek istenen kaynak dizinin uzunluğunu karşılaştırır. Eğer hedef dizinin boyutu kaynak dizinin eklenmesi gereken boyuta yetmiyorsa ve hedef dizinin boyutu 0'dan büyükse, eklemeye devam edilir. Eklenen kaynak dizisi sonlandırıcı karakteri ('\0') ile bitirilir ve son olarak hedef dizinin uzunluğu geri döndürülür.
 </p>
 
 - **ft_strchr**: Bir karakteri bir dizide arar.
@@ -281,10 +330,19 @@ Bu fonksiyon iki bellek bloğunu byte olarak karşılaştırır. İki bellek blo
 
 Örnek Kod:
 ```c
-
+char	*ft_strchr(const char *s, int c)
+{
+	while ((char)c != *s)
+	{
+		if (*s == 0)
+			return (0);
+		s++;
+	}
+	return ((char *)s);
+}
 ```
 <p align="left">
-
+Bu kod, bir karakter dizisinde belirli bir karakterin ilk bulunduğu konumu bulmak için kullanılır. Karakter dizisi üzerinde dolaşarak, belirli karakteri bulduğunda bulunduğu konumu işaret eden bir adres döndürür. Eğer belirli karakter bulunmazsa, NULL değeri döndürür.
 </p>
 
 - **ft_strrchr**: Bir karakteri bir dizide sondan arar.
