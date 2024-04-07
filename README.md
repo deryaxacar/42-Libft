@@ -920,10 +920,14 @@ Bu kod, verilen bir karakteri büyük harfe dönüştürmek için kullanılır. 
 
 Örnek Kod:
 ```c
-
+int	ft_isalnum(int c)
+{
+	return (ft_isalpha(c) || ft_isdigit(c));
+}
 ```
 <p align="left">
 
+Bu kod, verilen bir karakterin alfasayısal (harf veya rakam) olup olmadığını kontrol eder. ft_isalpha ve ft_isdigit fonksiyonlarını kullanarak, verilen karakterin hem bir harf hem de bir rakam olup olmadığını kontrol eder. Eğer verilen karakter bir harf ise veya bir rakamsa, fonksiyon 1 değerini döndürür (doğru). Aksi halde, 0 değerini döndürür (yanlış). Bu sayede, verilen karakterin alfasayısal olup olmadığını belirlemek için kullanılabilir.
 </p>
 
 - **ft_isalpha**: Bir karakterin alfasayısal olup olmadığını kontrol eder.
@@ -933,10 +937,13 @@ Bu kod, verilen bir karakteri büyük harfe dönüştürmek için kullanılır. 
 
 Örnek Kod:
 ```c
-
+int	ft_isalpha(int c)
+{
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+}
 ```
 <p align="left">
-
+Bu kod, verilen bir karakterin bir alfabetik karakter olup olmadığını kontrol eder. Karakterin 'a' ile 'z' arasında veya 'A' ile 'Z' arasında olup olmadığını kontrol eder. Eğer verilen karakter alfabede bir harf ise, fonksiyon 1 değerini döndürür (doğru). Aksi halde, 0 değerini döndürür (yanlış). Bu sayede, verilen karakterin alfabede bir harf olup olmadığını belirlemek için kullanılabilir.
 </p>
 
 - **ft_isascii**: Bir karakterin standart ASCII karakteri olup olmadığını kontrol eder.
@@ -946,10 +953,13 @@ Bu kod, verilen bir karakteri büyük harfe dönüştürmek için kullanılır. 
 
 Örnek Kod:
 ```c
-
+int	ft_isascii(int c)
+{
+	return (c >= 0 && c < 128);
+}
 ```
 <p align="left">
-
+Bu kod, verilen bir karakterin ASCII karakter setine ait olup olmadığını kontrol eder. ASCII karakter setindeki karakterler 0 ile 127 arasında yer alır. Dolayısıyla, bu fonksiyon, verilen karakterin 0 (dahil) ile 127 (hariç) arasında olup olmadığını kontrol eder. Eğer karakter ASCII karakter setine aitse, yani 0 ile 127 arasında bir değerse, fonksiyon 1 değerini döndürür (doğru). Aksi halde, 0 değerini döndürür (yanlış). Bu fonksiyon, bir karakterin ASCII karakter setine ait olup olmadığını belirlemek için kullanılabilir.
 </p>
 
 - **ft_isdigit**: Bir karakterin bir rakam karakteri olup olmadığını kontrol eder.
@@ -959,10 +969,13 @@ Bu kod, verilen bir karakteri büyük harfe dönüştürmek için kullanılır. 
 
 Örnek Kod:
 ```c
-
+int	ft_isdigit(int c)
+{
+	return (c <= '9' && c >= '0');
+}
 ```
 <p align="left">
-
+Bu fonksiyon, verilen bir karakterin bir rakam karakteri olup olmadığını kontrol eder. Rakam karakterleri '0' ile '9' arasında ASCII kodlarına sahiptir. Dolayısıyla, bu fonksiyon verilen karakterin bu aralıkta olup olmadığını kontrol eder. Eğer verilen karakter bir rakam karakteri ise, fonksiyon doğru (1) değerini döndürür. Aksi takdirde, yanlış (0) değerini döndürür. Bu fonksiyon, bir karakterin rakam olup olmadığını belirlemek için kullanılır.
 </p>
 
 - **ft_isprint**: Bir karakterin yazdırılabilir bir karakter olup olmadığını kontrol eder.
@@ -972,10 +985,13 @@ Bu kod, verilen bir karakteri büyük harfe dönüştürmek için kullanılır. 
 
 Örnek Kod:
 ```c
-
+int	ft_isprint(int c)
+{
+	return (c >= 32 && c <= 126);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, verilen bir karakterin basılabilir (printable) karakter olup olmadığını kontrol eder. Basılabilir karakterler ASCII kod 32 ile 126 arasındadır ve klavye üzerinde yazdırılabilir karakterlerin çoğunu temsil eder. Fonksiyon, verilen karakterin bu aralıkta olup olmadığını kontrol eder. Eğer verilen karakter bir basılabilir karakter ise, fonksiyon doğru (1) değerini döndürür. Aksi takdirde, yanlış (0) değerini döndürür. Bu fonksiyon, bir karakterin ekrana yazdırılabilir olup olmadığını kontrol etmek için kullanılır.
 </p>
 
 ## Bonus Fonksiyonlar
