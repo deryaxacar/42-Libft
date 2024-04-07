@@ -17,7 +17,6 @@
 - [Gereksinimler](#gereksinimler)
 - [Kullanım](#kullanım)
 - [Fonksiyonlar](#fonksiyonlar)
-- [Kullanım](#kullanım)
 - [Bonus Fonksiyonlar](#bonus-fonksiyonlar)
 - [Notlar](#notlar)
   
