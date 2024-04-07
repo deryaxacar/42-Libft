@@ -166,7 +166,7 @@ dst ve src adreslerinin konumlarına göre kopyalama işlemi gerçekleştirilir:
 <ul>Eğer dst kaynak adresinden daha küçükse, bellek bloğu memcpy fonksiyonu kullanılarak kopyalanır.</ul>
 <ul>Eğer dst hedef adresinden daha büyükse, bellek bloğu geriye doğru (src adresinden dst adresine doğru) kopyalanır. </ul>
 
-Bu kodda overlap durumunun önüne geçmek için tersten kopyalama yapılmıştır. [Notlar](#notlar) kısmından overlap durumu ile ilgili daha fazla bilgi edinebilirsiniz.
+Not: Bu kodda overlap durumunun önüne geçmek için tersten kopyalama yapılmıştır. [Notlar](#notlar) kısmından overlap durumu ile ilgili daha fazla bilgi edinebilirsiniz.
 </p>
 
 - **ft_memchr**: Belirli bir karakteri bellekte arar.
@@ -528,7 +528,7 @@ char	*ft_itoa(int n)
 Bu fonksiyon, bir tamsayıyı karakter dizisine (string) dönüştürür. İlk olarak, tamsayının uzunluğunu belirlemek için ft_string_leng fonksiyonunu kullanır. Daha sonra, tamsayının negatif olup olmadığını kontrol eder ve gerektiğinde işaret karakterini ekler. Ardından, karakter dizisi için gerekli bellek alanını (malloc) ayırır. Tamsayının her basamağını sağdan sola doğru dönüştürerek karakter dizisine ekler. Son olarak, oluşturulan karakter dizisini döndürür.
 </p>
 
-[Notlar](#notlar) kısmından static ile ilgili daha fazla bilgi edinebilirsiniz.
+Not : Bu fonksiyonda öncekilerden farklı olarak static bir fonksiyon bulunmakta [Notlar](#notlar) kısmından static fonksiyon ile ilgili daha fazla bilgi edinebilirsiniz.
 
 - **ft_strdup**: Bir dizinin kopyasını yapar.
   - Prototip: `char *ft_strdup(const char *s);`
@@ -537,10 +537,28 @@ Bu fonksiyon, bir tamsayıyı karakter dizisine (string) dönüştürür. İlk o
 
 Örnek Kod:
 ```c
+char	*ft_strdup(const char *s)
+{
+	char	*str;
+	size_t	leng;
+	size_t	i;
 
+	leng = ft_strlen(s);
+	str = (char *)malloc(sizeof(char) * (leng + 1));
+	if (!(str))
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, bir karakter dizisinin (s) bellekte yeni bir alan tahsis ederek kopyasını oluşturur ve bu kopyanın adresini döndürür. Bellek tahsis etme işlemi malloc fonksiyonu ile yapılır. Ardından, karakter dizisinin uzunluğu hesaplanır ve bu uzunluk kadar bellekte yer ayrılır. Dizideki her karakter kopyalanarak yeni bellek bloğuna yerleştirilir. Son olarak, yeni dizinin sonuna null karakter ('\0') eklenir ve bu diziye ait adres döndürülür. Eğer bellek tahsis işlemi başarısız olursa (malloc NULL döndürürse), fonksiyon da NULL döndürür.
 </p>
 
 - **ft_striteri**: Bir dizenin her karakteri üzerinde belirtilen işlemi gerçekleştirir.
@@ -551,10 +569,44 @@ Bu fonksiyon, bir tamsayıyı karakter dizisine (string) dönüştürür. İlk o
 
 Örnek Kod:
 ```c
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	unsigned int	i;
 
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
+	return ;
+}
 ```
 <p align="left">
+Bu fonksiyon, bir karakter dizisindeki her karakter üzerinde belirtilen işlemi gerçekleştirir. İşlem, her karakterin konumu ve adresi üzerinde bir işlevin çağrılmasıyla gerçekleştirilir. Fonksiyon, karakter dizisinin her bir elemanını işlemek için bir döngü kullanır. Döngü her adımda işlevi (f) çağırarak karakterin dizideki konumunu ve adresini ileterek işlemi gerçekleştirir. Bu işlem, karakter dizisinin sonuna kadar devam eder.
+not: örnek olarak dışarıdan tolower fonksiyonunu girelim ve stringdeki tüm harflere teker teker yazdırma işlemi uygulasın.
+</p>
 
+```c
+#include <stdio.h>
+#include "libft.h"
+
+void	print_char(unsigned int index, char *c) {
+    printf("%c", *c);
+}
+
+int main() {
+    char str[] = "Hello, World!";
+    
+    printf("Printing characters in the string:\n");
+    ft_striteri(str, &print_char);
+    putchar('\n');
+    
+    return 0;
+}
+```
+<p align="left">
+mainde bir string oluşturduk (str) yukarıda da yazdırma fonksiyonumuz var (print_char), ft_striteri fonksiyonuna stringimizi (str) ve yazdırma fonksiyonumuzu (print_char) yolladık ve while koşulu sağlandığı sürece yazdırma fonksiyonuna stringin indexlerini teker teker gönderip yazdırıp indexini arttırıcaktır.
 </p>
 
 - **ft_strjoin**: İki diziyi birleştirir.
