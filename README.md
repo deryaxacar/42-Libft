@@ -31,9 +31,9 @@ Projeyi çalıştırmak için herhangi bir özel gereksinim yoktur. Sadece C der
 
 Projeyi kullanmak için aşağıdaki adımları izleyebilirsiniz:
 
-1. Libft kütüphanesini indirin veya kendi projenize ekleyin.
-2. `#include "libft.h"` ifadesini projenizin başlangıcına ekleyin.
-3. İlgili fonksiyonları kullanarak projenizi geliştirin.
+1. Sağ Üstteki `<> Code` kısmına tıklayın.
+2. `Download Zip` kısmına tıklayın ve zip dosyasını indirin.
+3. Bilgisayarınızdaki zip dosyasını açın.
 
 <!-- Fonksiyonlar -->
 ## Fonksiyonlar
