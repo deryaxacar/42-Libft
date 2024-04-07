@@ -110,6 +110,33 @@ Bu işlevler, genellikle bellek alanının manipülasyonu ve işlenmesi gereken 
 - **ft_strdup**: Bir dizinin kopyasını yapar.
   - Prototip: `char *ft_strdup(const char *s);`
   - `s`: Kopyalanacak dizi.
+- **ft_striteri**: Bir dizenin her karakteri üzerinde belirtilen işlemi gerçekleştirir.
+  - **Prototip**: `void ft_striteri(char *s, void (*f)(unsigned int, char*));`
+  - `s`: İşlem yapılacak dize.
+  - `f`: Her karakter üzerinde çağrılacak işlev.
+- **ft_strjoin**: İki diziyi birleştirir.
+  - **Prototip**: `char *ft_strjoin(const char *s1, const char *s2);`
+  - `s1`: Birleştirilecek ilk dizi.
+  - `s2`: Birleştirilecek ikinci dizi.
+- **ft_strmapi**: Bir dizenin her karakteri üzerinde belirtilen işlemi gerçekleştirir.
+  - **Prototip**: `char *ft_strmapi(const char *s, char (*f)(unsigned int, char));`
+  - `s`: İşlem yapılacak dize.
+  - `f`: Her karakter üzerinde çağrılacak işlev.
+- **ft_strtrim**: Bir dizenin başındaki ve sonundaki belirli karakterleri kaldırır.
+  - **Prototip**: `char *ft_strtrim(const char *s1, const char *set);`
+  - `s1`: İşlem yapılacak dize.
+  - `set`: Kaldırılacak karakter kümesi.
+- **ft_substr**: Bir alt dize oluşturur.
+  - **Prototip**: `char *ft_substr(const char *s, unsigned int start, size_t len);`
+  - `s`: İşlem yapılacak dize.
+  - `start`: Alt dizenin başlangıç konumu.
+  - `len`: Alt dizenin uzunluğu.
+- **ft_tolower**: Bir karakteri küçük harfe dönüştürür.
+  - **Prototip**: `int ft_tolower(int c);`
+  - `c`: Dönüştürülecek karakterin ASCII değeri.
+- **ft_toupper**: Bir karakteri büyük harfe dönüştürür.
+  - **Prototip**: `int ft_toupper(int c);`
+  - `c`: Dönüştürülecek karakterin ASCII değeri.
 
 ### Dize İşlemleri Nedir?
 <p align="left">
