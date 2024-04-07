@@ -1005,10 +1005,21 @@ Bu fonksiyon, verilen bir karakterin basılabilir (printable) karakter olup olma
 
 Örnek Kod:
 ```c
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
 
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
+	return ;
+}
 ```
 <p align="left">
-
+Bu fonksiyon, verilen bir karakter dizisini (string) belirtilen dosya tanımlayıcısına (fd) yazdırmak için kullanılır. Karakter dizisi s üzerinde döngü kullanarak her bir karakteri tek tek ft_putchar_fd fonksiyonu aracılığıyla belirtilen dosya tanımlayıcısına yazdırır. Sonuç olarak, bu fonksiyon verilen karakter dizisini belirtilen dosya tanımlayıcısına yazdırır.
 </p>
 
 - **ft_putendl_fd**: Bir diziyi belirtilen dosya tanımlayıcısına yazıp yeni bir satır ekler.
@@ -1019,10 +1030,17 @@ Bu fonksiyon, verilen bir karakterin basılabilir (printable) karakter olup olma
 
 Örnek Kod:
 ```c
-
+void	ft_putendl_fd(char *s, int fd)
+{
+	if (s)
+	{
+		ft_putstr_fd(s, fd);
+		ft_putchar_fd('\n', fd);
+	}
+}
 ```
 <p align="left">
-
+Bu fonksiyon, verilen bir karakter dizisini (s) belirtilen dosya tanımlayıcısına (fd) yazdırmak için kullanılır. Ancak yazdırma işleminden sonra bir satır sonu karakteri (\n) ekleyerek yeni bir satır oluşturur. Fonksiyon, verilen karakter dizisinin boş olup olmadığını kontrol eder ve eğer boş değilse önce ft_putstr_fd fonksiyonuyla karakter dizisini yazdırır, ardından bir satır sonu karakteri ekler. Sonuç olarak, bu fonksiyon belirtilen karakter dizisini belirtilen dosya tanımlayıcısına yazdırır ve ardından bir satır sonu karakteri ekler.
 </p>
 
 - **ft_putnbr_fd**: Bir tam sayıyı belirtilen dosya tanımlayıcısına yazar.
@@ -1033,10 +1051,34 @@ Bu fonksiyon, verilen bir karakterin basılabilir (printable) karakter olup olma
 
 Örnek Kod:
 ```c
+void	ft_putnbr_fd(int n, int fd)
+{
+	long int	nb;
+	char		c;
 
+	if (fd < 0)
+		return ;
+	nb = n;
+	if (nb < 0)
+	{
+		write (fd, "-", 1);
+		nb *= -1;
+	}
+	if (nb < 10)
+	{
+		c = nb + '0';
+		write(fd, &c, 1);
+	}
+	else
+	{
+		ft_putnbr_fd((nb / 10), fd);
+		c = nb % 10 + '0';
+		write(fd, &c, 1);
+	}
+}
 ```
 <p align="left">
-
+Bu fonksiyon, bir tamsayıyı (n) belirtilen dosya tanımlayıcısına (fd) yazdırmak için kullanılır. Fonksiyon, öncelikle tamsayının negatif olup olmadığını kontrol eder. Eğer negatifse, negatif işaretini yazdırır ve sayıyı pozitife dönüştürür. Daha sonra, sayının basamaklarını ayrı ayrı yazdırmak için bir döngü kullanır. Her basamak için, sayıyı 10'a böler ve kalanını ASCII karakterine dönüştürerek yazdırır. Bu işlem, sayının her basamağı için tekrarlanır ve sonunda tamsayı, belirtilen dosya tanımlayıcısına doğru biçimde yazdırılmış olur.
 </p>
 
 - **ft_putchar_fd**: Bir karakteri belirtilen dosya tanımlayıcısına yazar.
@@ -1047,10 +1089,13 @@ Bu fonksiyon, verilen bir karakterin basılabilir (printable) karakter olup olma
 
 Örnek Kod:
 ```c
-
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, bir karakteri (c) belirtilen dosya tanımlayıcısına (fd) yazdırmak için kullanılır. write fonksiyonu kullanılarak karakter belirtilen dosya tanımlayıcısına yazdırılır. Burada &c ifadesi, karakterin bellek adresine işaret eder ve 1 ise yazdırılacak byte sayısını temsil eder. Bu durumda, sadece bir karakterin yazdırılacağı belirtilmiştir.
 </p>
 
 ### Liste işlemleri
