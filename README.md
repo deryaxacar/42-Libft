@@ -1107,7 +1107,17 @@ Bu fonksiyon, bir karakteri (c) belirtilen dosya tanımlayıcısına (fd) yazdı
 
 Örnek Kod:
 ```c
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*new_list;
 
+	new_list = malloc(sizeof(t_list));
+	if (!new_list)
+		return (NULL);
+	new_list->content = content;
+	new_list->next = NULL;
+	return (new_list);
+}
 ```
 <p align="left">
 
@@ -1121,11 +1131,14 @@ Bu fonksiyon, bir karakteri (c) belirtilen dosya tanımlayıcısına (fd) yazdı
 
 Örnek Kod:
 ```c
-
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (!lst && !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
+}
 ```
-<p align="left">
-
-</p>
 
 - **ft_lstsize**: Listenin eleman sayısını döndürür.
   - Prototip: `int ft_lstsize(t_list *lst);`
@@ -1134,11 +1147,19 @@ Bu fonksiyon, bir karakteri (c) belirtilen dosya tanımlayıcısına (fd) yazdı
 
 Örnek Kod:
 ```c
+int	ft_lstsize(t_list *lst)
+{
+	int	counter;
 
+	counter = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		counter++;
+	}
+	return (counter);
+}
 ```
-<p align="left">
-
-</p>
 
 - **ft_lstlast**: Listenin son elemanını döndürür.
   - Prototip: `t_list *ft_lstlast(t_list *lst);`
@@ -1147,7 +1168,16 @@ Bu fonksiyon, bir karakteri (c) belirtilen dosya tanımlayıcısına (fd) yazdı
 
 Örnek Kod:
 ```c
-
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!lst)
+		return (0);
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+	}
+	return (lst);
+}
 ```
 <p align="left">
 
@@ -1161,11 +1191,19 @@ Bu fonksiyon, bir karakteri (c) belirtilen dosya tanımlayıcısına (fd) yazdı
 
 Örnek Kod:
 ```c
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*last;
 
+	if (*lst)
+	{
+		last = ft_lstlast(*lst);
+		last->next = new;
+	}
+	else
+		*lst = new;
+}
 ```
-<p align="left">
-
-</p>
 
 - **ft_lstdelone**: Belirli bir düğümü siler.
   - Prototip: `void ft_lstdelone(t_list *lst, void (*del)(void*));`
@@ -1175,10 +1213,16 @@ Bu fonksiyon, bir karakteri (c) belirtilen dosya tanımlayıcısına (fd) yazdı
 
 Örnek Kod:
 ```c
-
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
+{
+	if (!lst)
+		return ;
+	del(lst->content);
+	free(lst);
+}
 ```
 <p align="left">
-
+Bu fonksiyon, bir t_list düğümünü ve içeriğini silen işlevdir. İlk parametre olarak aldığı t_list düğümünün içeriğini ikinci parametre olarak aldığı silme işleviyle siler. Sonrasında düğümü ve içeriğini bellekten serbest bırakır.
 </p>
 
 - **ft_lstclear**: Tüm listeyi siler.
@@ -1189,7 +1233,18 @@ Bu fonksiyon, bir karakteri (c) belirtilen dosya tanımlayıcısına (fd) yazdı
 
 Örnek Kod:
 ```c
+void	ft_lstclear(t_list **lst, void (*del)(void*))
+{
+	t_list	*clear;
 
+	clear = *lst;
+	while (lst && *lst)
+	{
+		clear = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = clear;
+	}
+}
 ```
 <p align="left">
 
@@ -1203,7 +1258,14 @@ Bu fonksiyon, bir karakteri (c) belirtilen dosya tanımlayıcısına (fd) yazdı
 
 Örnek Kod:
 ```c
-
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}
 ```
 <p align="left">
 
@@ -1218,11 +1280,31 @@ Bu fonksiyon, bir karakteri (c) belirtilen dosya tanımlayıcısına (fd) yazdı
 
 Örnek Kod:
 ```c
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	t_list	*new;
+	t_list	*begin;
+	void	*content;
 
+	if (lst == NULL || f == NULL)
+		return (NULL);
+	begin = NULL;
+	while (lst)
+	{
+		content = (*f)(lst->content);
+		new = ft_lstnew(content);
+		if (!new)
+		{
+			(*del)(content);
+			ft_lstclear(&begin, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&begin, new);
+		lst = lst->next;
+	}
+	return (begin);
+}
 ```
-<p align="left">
-
-</p>
 
 ## Notlar
 
@@ -1353,6 +1435,10 @@ Bir değişken "static" olarak tanımlandığında, bu değişken global kapsamd
 Bir fonksiyon "static" olarak tanımlandığında, bu fonksiyon yalnızca tanımlandığı dosyanın içinde erişilebilir. Başka bir dosyadan bu fonksiyona erişilemez. Bu şekilde, fonksiyonun kapsamı sınırlanmış olur ve kodun daha modüler hale gelmesine yardımcı olur.
 </p>
 
+### size_t Nedir? 
+<p align="left">
+size_t, C ve C++ gibi dillerde kullanılan bir tamsayı türüdür. Bu tür, bellek adresleme ve dizi indeksleme gibi boyutları ifade etmek için genellikle kullanılır. Platforma bağlı olarak değişebilir ve genellikle en büyük adreslenebilir bellek miktarını temsil eder. Örneğin, bir dizinin boyutunu veya bir bellek bloğunun boyutunu temsil etmek için kullanılabilir. size_t, stddef.h başlık dosyasında tanımlanır.
+</p>
 
 ### Open Fonksiyonu Nedir? 
 <p align="left">
