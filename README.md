@@ -47,17 +47,65 @@ Projeyi kullanmak için aşağıdaki adımları izleyebilirsiniz:
   - `n`: Doldurulacak byte sayısı.
   - Dönüş Değeri: Başlangıç adresini içeren bir işaretçi (s).
 
+Örnek Kod:
+```c
+void	*ft_memset(void *s, int c, size_t n)
+{
+	unsigned char	*str;
+
+	str = (unsigned char *)s;
+	while (n > 0)
+	{
+		*str = (unsigned char)c;
+		str++;
+		n--;
+	}
+	return (s);
+}
+```
+<p align="left">
+Açıklama: s adresindeki bellek bloğunu n bayt boyunca c değeriyle doldurur. İşlev, her doldurma işleminden sonra bellek bloğunun sonraki baytına geçer ve işlem n bayt doldurulana kadar devam eder. Sonunda, fonksiyon s adresine işaret eden bir işaretçi döndürür.
+</p>
+
 - **ft_bzero**: Belleği sıfırlar.
   - Prototip: `void ft_bzero(void *s, size_t n);`
   - `s`: Sıfırlanacak bellek bloğunun başlangıç adresi.
   - `n`: Sıfırlanacak byte sayısı.
   - Dönüş Değeri: Yok (void). Sadece işlemi gerçekleştirir.
 
+Örnek Kod:
+```c
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
+```
+<p align="left">
+Açıklama: ft_memset işlevini çağırır ve bu işlev aracılığıyla bellek bloğunu 0 ile doldurur. Yani, ft_bzero aslında ft_memset fonksiyonunu çağırmakla görevlidir. 
+</p>
+
 - **ft_calloc**: Belirtilen boyutta bellek bloğu tahsis eder ve sıfırlar.
   - Prototip: `void *ft_calloc(size_t count, size_t size);`
   - `count`: Tahsis edilecek öğe sayısı.
   - `size`: Her öğenin boyutu (byte cinsinden).
   - Dönüş Değeri: Tahsis edilen bellek bloğunun başlangıç adresini içeren bir işaretçi.
+
+Örnek Kod:
+```c
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(size * count);
+	if (!(ptr))
+		return (NULL);
+	ft_bzero(ptr, (count * size));
+	return (ptr);
+}
+```
+<p align="left">
+Açıklama: Belirtilen boyutta bir bellek bloğu tahsis eder ve tüm alanlarını sıfırlar. Öncelikle, malloc fonksiyonuyla bellek tahsis edilir. Ardından, tahsis edilen belleğin tüm alanları ft_bzero fonksiyonu ile sıfırla doldurulur ve başlangıç adresi döndürülür.
+</p>
 
 - **ft_memcpy**: Bellek bloğunu kopyalar.
   - Prototip: `void *ft_memcpy(void *dest, const void *src, size_t n);`
@@ -329,6 +377,41 @@ Karakter işlemleri, genellikle bir karakterin belirli bir özelliğe sahip olup
 ### Liste İşlemleri Nedir?
 <p align="left">
 Liste işlemleri, verilerin düğüm adı verilen birimler halinde organize edilmesi ve işlenmesi için kullanılan işlevlerdir. Bu işlevler, bir veri yapısında yeni bir düğüm oluşturmak, düğüm eklemek, düğüm silmek, düğüm aramak, düğüm sayısını hesaplamak gibi çeşitli işlemleri gerçekleştirir.
+</p>
+
+### Malloc Nedir?
+<p align="left">
+malloc, C programlama dilinde dinamik bellek tahsis etmek için kullanılan bir fonksiyondur. Çalışma zamanında belirli bir boyutta bellek bloğu talep etmek için kullanılır.
+</p>
+
+Örnek Kod:
+```c
+int main() {
+    // 10 integer değeri için bellek tahsis et
+    int *ptr = (int *)malloc(10 * sizeof(int));
+
+    // Bellek tahsisi başarılı mı kontrol et
+    if (ptr == NULL) {
+        printf("Bellek tahsis edilemedi!");
+        return -1;
+    }
+
+    // Belleği kullan
+    for (int i = 0; i < 10; i++) {
+        ptr[i] = i * 2;
+        printf("%d ", ptr[i]);
+    }
+
+    // Belleği serbest bırak
+    free(ptr);
+
+    return 0;
+}
+```
+
+### Calloc Nedir?
+<p align="left">
+calloc, bellek tahsis etmek için kullanılan bir işlevdir. "Calloc" kelimesi "continuous allocation" kelimelerinin kısaltmasıdır. calloc, bellek tahsis etmek için malloc işlevi gibi kullanılır, ancak farklı olarak ayrılan belleği sıfırlar, yani tüm byte'ları sıfır değeriyle doldurur.
 </p>
 
 ### Open Fonksiyonu Nedir? 
