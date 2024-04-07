@@ -166,7 +166,7 @@ dst ve src adreslerinin konumlarına göre kopyalama işlemi gerçekleştirilir:
 <ul>Eğer dst kaynak adresinden daha küçükse, bellek bloğu memcpy fonksiyonu kullanılarak kopyalanır.</ul>
 <ul>Eğer dst hedef adresinden daha büyükse, bellek bloğu geriye doğru (src adresinden dst adresine doğru) kopyalanır. </ul>
 
-Bu kodda overlap durumu bulunmaktadır [Notlar](#notlar) kısmından overlap durumu ile ilgili daha fazla bilgi edinebilirsiniz.
+Bu kodda overlap durumunun önüne geçmek için tersten kopyalama yapılmıştır. [Notlar](#notlar) kısmından overlap durumu ile ilgili daha fazla bilgi edinebilirsiniz.
 </p>
 
 - **ft_memchr**: Belirli bir karakteri bellekte arar.
