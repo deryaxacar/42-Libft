@@ -13,9 +13,13 @@
 
 <!-- Proje Başlıkları ve İçindekiler -->
 ## İçindekiler
+
 - [Gereksinimler](#gereksinimler)
 - [Kullanım](#kullanım)
 - [Fonksiyonlar](#fonksiyonlar)
+- [Gereksinimler](#gereksinimler)
+- [Kullanım](#kullanım)
+- [Bonus Fonksiyonlar](#bonus-fonksiyonlar)
 
 <!-- Gereksinimler -->
 ## Gereksinimler
@@ -45,6 +49,10 @@ Projeyi kullanmak için aşağıdaki adımları izleyebilirsiniz:
   - Prototip: `void ft_bzero(void *s, size_t n);`
   - `s`: Sıfırlanacak bellek bloğunun başlangıç adresi.
   - `n`: Sıfırlanacak byte sayısı.
+- **ft_calloc**: Belirtilen boyutta bellek bloğu tahsis eder ve sıfırlar.
+  - Prototip: `void *ft_calloc(size_t count, size_t size);`
+  - `count`: Tahsis edilecek öğe sayısı.
+  - `size`: Her öğenin boyutu (byte cinsinden).
 - **ft_memcpy**: Bellek bloğunu kopyalar.
   - Prototip: `void *ft_memcpy(void *dest, const void *src, size_t n);`
   - `dest`: Kopyalanan verinin hedef adresi.
@@ -111,31 +119,35 @@ Bu işlevler, genellikle bellek alanının manipülasyonu ve işlenmesi gereken 
   - Prototip: `char *ft_strdup(const char *s);`
   - `s`: Kopyalanacak dizi.
 - **ft_striteri**: Bir dizenin her karakteri üzerinde belirtilen işlemi gerçekleştirir.
-  - **Prototip**: `void ft_striteri(char *s, void (*f)(unsigned int, char*));`
+  - Prototip: `void ft_striteri(char *s, void (*f)(unsigned int, char*));`
   - `s`: İşlem yapılacak dize.
   - `f`: Her karakter üzerinde çağrılacak işlev.
 - **ft_strjoin**: İki diziyi birleştirir.
-  - **Prototip**: `char *ft_strjoin(const char *s1, const char *s2);`
+  - Prototip: `char *ft_strjoin(const char *s1, const char *s2);`
   - `s1`: Birleştirilecek ilk dizi.
   - `s2`: Birleştirilecek ikinci dizi.
 - **ft_strmapi**: Bir dizenin her karakteri üzerinde belirtilen işlemi gerçekleştirir.
-  - **Prototip**: `char *ft_strmapi(const char *s, char (*f)(unsigned int, char));`
+  - Prototip: `char *ft_strmapi(const char *s, char (*f)(unsigned int, char));`
   - `s`: İşlem yapılacak dize.
   - `f`: Her karakter üzerinde çağrılacak işlev.
 - **ft_strtrim**: Bir dizenin başındaki ve sonundaki belirli karakterleri kaldırır.
-  - **Prototip**: `char *ft_strtrim(const char *s1, const char *set);`
+  - Prototip: `char *ft_strtrim(const char *s1, const char *set);`
   - `s1`: İşlem yapılacak dize.
   - `set`: Kaldırılacak karakter kümesi.
 - **ft_substr**: Bir alt dize oluşturur.
-  - **Prototip**: `char *ft_substr(const char *s, unsigned int start, size_t len);`
+  - Prototip: `char *ft_substr(const char *s, unsigned int start, size_t len);`
   - `s`: İşlem yapılacak dize.
   - `start`: Alt dizenin başlangıç konumu.
   - `len`: Alt dizenin uzunluğu.
+- **ft_split**: Belirtilen ayırıcı karaktere göre bir dizeyi bölüp bir dize dizisi oluşturur.
+  - Prototip: `char **ft_split(char const *s, char c);`
+  - `s`: Bölünecek dize.
+  - `c`: Ayırıcı karakter.
 - **ft_tolower**: Bir karakteri küçük harfe dönüştürür.
-  - **Prototip**: `int ft_tolower(int c);`
+  - Prototip: `int ft_tolower(int c);`
   - `c`: Dönüştürülecek karakterin ASCII değeri.
 - **ft_toupper**: Bir karakteri büyük harfe dönüştürür.
-  - **Prototip**: `int ft_toupper(int c);`
+  - Prototip: `int ft_toupper(int c);`
   - `c`: Dönüştürülecek karakterin ASCII değeri.
 
 ### Dize İşlemleri Nedir?
@@ -143,7 +155,32 @@ Bu işlevler, genellikle bellek alanının manipülasyonu ve işlenmesi gereken 
 Dize işlemleri, metinsel verilerin manipülasyonu ve işlenmesi için kullanılan işlevlerdir. Bu işlevler, bir dizenin uzunluğunu hesaplamak, başka bir dizeye kopyalamak, bir dizeye yeni karakterler eklemek, belirli bir karakteri bir dizide aramak, alt dize aramak veya iki dizeyi karşılaştırmak gibi çeşitli işlemleri gerçekleştirir.
 </p>
 
-## Bonus Fonksiyonlar 
+## Bonus Fonksiyonlar
+### Dosya İşlemleri
+
+- **ft_putstr_fd**: Bir diziyi belirtilen dosya tanımlayıcısına yazar.
+  - Prototip: `void ft_putstr_fd(char *s, int fd);`
+  - `s`: Yazılacak dize.
+  - `fd`: Yazma işleminin yapılacağı dosya tanımlayıcısı.
+
+- **ft_putendl_fd**: Bir diziyi belirtilen dosya tanımlayıcısına yazıp yeni bir satır ekler.
+  - Prototip: `void ft_putendl_fd(char *s, int fd);`
+  - `s`: Yazılacak dize.
+  - `fd`: Yazma işleminin yapılacağı dosya tanımlayıcısı.
+
+- **ft_putnbr_fd**: Bir tam sayıyı belirtilen dosya tanımlayıcısına yazar.
+  - Prototip: `void ft_putnbr_fd(int n, int fd);`
+  - `n`: Yazılacak tam sayı.
+  - `fd`: Yazma işleminin yapılacağı dosya tanımlayıcısı.
+- **ft_putchar_fd**: Bir karakteri belirtilen dosya tanımlayıcısına yazar.
+  - Prototip: `void ft_putchar_fd(char c, int fd);`
+  - `c`: Yazılacak karakter.
+  - `fd`: Yazma işleminin yapılacağı dosya tanımlayıcısı.
+### Dosya İşlemleri Nedir?
+<p align="left">
+Dosya işlemleri, bir bilgisayar sistemindeki dosyalara erişmek ve bu dosyaları okumak, yazmak, oluşturmak, silmek veya değiştirmek için yapılan işlemleri ifade eder. Bu işlemler, genellikle dosyaların veri okuma ve yazma işlemlerini içerir ve dosya sistemine erişim sağlamak için kullanılır. Dosya işlemleri, programların verileri kalıcı olarak depolamak ve gerektiğinde erişmek için dosyaları kullanmasına olanak tanır.
+</p>
+
 ### Liste işlemleri
 
 - **ft_lstnew**: Yeni bir liste düğümü oluşturur.
