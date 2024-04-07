@@ -143,6 +143,11 @@ Bu işlevler, genellikle bellek alanının manipülasyonu ve işlenmesi gereken 
   - `str`: Dönüştürülecek dizi.
   - Dönüş Değeri: Dönüştürülen tam sayı değeri.
 
+- **ft_itoa**: Bir tam sayıyı bir dizgiye dönüştürür.
+  - Prototip: `char *ft_itoa(int n);`
+  - `n`:  Dönüştürülecek tam sayı.
+  - Dönüş Değeri: Dönüştürülen tam sayıyı içeren bir dizgi.
+
 - **ft_strdup**: Bir dizinin kopyasını yapar.
   - Prototip: `char *ft_strdup(const char *s);`
   - `s`: Kopyalanacak dizi.
