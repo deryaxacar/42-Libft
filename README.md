@@ -19,7 +19,8 @@
 - [Fonksiyonlar](#fonksiyonlar)
 - [Kullanım](#kullanım)
 - [Bonus Fonksiyonlar](#bonus-fonksiyonlar)
-
+- [Notlar](#notlar)
+  
 <!-- Gereksinimler -->
 ## Gereksinimler
 
@@ -85,11 +86,6 @@ Projeyi kullanmak için aşağıdaki adımları izleyebilirsiniz:
   - `s2`: Karşılaştırılacak ikinci bellek bloğunun adresi.
   - `n`: Karşılaştırılacak maksimum byte sayısı.
   - Dönüş Değeri: İlk farklı karakterin ASCII değerlerinin farkı (s1 ve s2 arasında). Eğer bloklar aynıysa 0 döner.
-
-### Bellek İşlemleri Nedir?
-<p align="left">
-Bu işlevler, genellikle bellek alanının manipülasyonu ve işlenmesi gereken durumlarda kullanılır. Örneğin, bir dizi içinde belirli bir değerin aranması, bellek alanının belirli bir değerle doldurulması veya bellek bloklarının karşılaştırılması gibi işlemlerde bu fonksiyonlara ihtiyaç duyulur.
-</p>
 
 ### Dize İşlemleri
 
@@ -200,11 +196,6 @@ Bu işlevler, genellikle bellek alanının manipülasyonu ve işlenmesi gereken 
   - `c`: Dönüştürülecek karakterin ASCII değeri.
   - Dönüş Değeri: Dönüştürülmüş karakterin ASCII değeri.
 
-### Dize İşlemleri Nedir?
-<p align="left">
-Dize işlemleri, metinsel verilerin manipülasyonu ve işlenmesi için kullanılan işlevlerdir. Bu işlevler, bir dizenin uzunluğunu hesaplamak, başka bir dizeye kopyalamak, bir dizeye yeni karakterler eklemek, belirli bir karakteri bir dizide aramak, alt dize aramak veya iki dizeyi karşılaştırmak gibi çeşitli işlemleri gerçekleştirir.
-</p>
-
 ### Karakter İşlemleri
 
 - **ft_isalnum**: Bir karakterin alfasayısal veya sayısal olup olmadığını kontrol eder.
@@ -232,11 +223,6 @@ Dize işlemleri, metinsel verilerin manipülasyonu ve işlenmesi için kullanıl
   - `c`: Kontrol edilecek karakterin ASCII değeri.
   - Dönüş Değeri: Eğer karakter yazdırılabilir ise 1; aksi halde 0 döner.
 
-### Karakter İşlemleri Nedir?
-<p align="left">
-Karakter işlemleri, genellikle bir karakterin belirli bir özelliğe sahip olup olmadığını kontrol etmek için kullanılan işlemlerdir. Örneğin, bir karakterin bir harf olup olmadığını, bir rakam olup olmadığını, bir yazdırılabilir karakter olup olmadığını veya bir ASCII karakteri olup olmadığını belirlemek gibi işlemleri içerir. Bu tür işlemler, genellikle karakter dizilerini veya kullanıcıdan alınan girdileri işlerken karakterlerin özelliklerini kontrol etmek için kullanılır.
-</p>
-
 ## Bonus Fonksiyonlar
 ### Dosya İşlemleri
 
@@ -263,11 +249,6 @@ Karakter işlemleri, genellikle bir karakterin belirli bir özelliğe sahip olup
   - `c`: Yazılacak karakter.
   - `fd`: Yazma işleminin yapılacağı dosya tanımlayıcısı.
   - Dönüş Değeri: Yok (void). Sadece işlemi gerçekleştirir.
-
-### Dosya İşlemleri Nedir?
-<p align="left">
-Dosya işlemleri, bir bilgisayar sistemindeki dosyalara erişmek ve bu dosyaları okumak, yazmak, oluşturmak, silmek veya değiştirmek için yapılan işlemleri ifade eder. Bu işlemler, genellikle dosyaların veri okuma ve yazma işlemlerini içerir ve dosya sistemine erişim sağlamak için kullanılır. Dosya işlemleri, programların verileri kalıcı olarak depolamak ve gerektiğinde erişmek için dosyaları kullanmasına olanak tanır.
-</p>
 
 ### Liste işlemleri
 
@@ -323,7 +304,68 @@ Dosya işlemleri, bir bilgisayar sistemindeki dosyalara erişmek ve bu dosyalar�
   - `del`: Düğüm içeriğini silen işlev.
   - Dönüş Değeri: Yeni oluşturulan liste başının adresini içeren bir işaretçi (t_list *).
 
+## Notlar
+
+### Bellek İşlemleri Nedir?
+<p align="left">
+Bu işlevler, genellikle bellek alanının manipülasyonu ve işlenmesi gereken durumlarda kullanılır. Örneğin, bir dizi içinde belirli bir değerin aranması, bellek alanının belirli bir değerle doldurulması veya bellek bloklarının karşılaştırılması gibi işlemlerde bu fonksiyonlara ihtiyaç duyulur.
+</p>
+
+### Dize İşlemleri Nedir?
+<p align="left">
+Dize işlemleri, metinsel verilerin manipülasyonu ve işlenmesi için kullanılan işlevlerdir. Bu işlevler, bir dizenin uzunluğunu hesaplamak, başka bir dizeye kopyalamak, bir dizeye yeni karakterler eklemek, belirli bir karakteri bir dizide aramak, alt dize aramak veya iki dizeyi karşılaştırmak gibi çeşitli işlemleri gerçekleştirir.
+</p>
+
+### Dosya İşlemleri Nedir?
+<p align="left">
+Dosya işlemleri, bir bilgisayar sistemindeki dosyalara erişmek ve bu dosyaları okumak, yazmak, oluşturmak, silmek veya değiştirmek için yapılan işlemleri ifade eder. Bu işlemler, genellikle dosyaların veri okuma ve yazma işlemlerini içerir ve dosya sistemine erişim sağlamak için kullanılır. Dosya işlemleri, programların verileri kalıcı olarak depolamak ve gerektiğinde erişmek için dosyaları kullanmasına olanak tanır.
+</p>
+
+### Karakter İşlemleri Nedir?
+<p align="left">
+Karakter işlemleri, genellikle bir karakterin belirli bir özelliğe sahip olup olmadığını kontrol etmek için kullanılan işlemlerdir. Örneğin, bir karakterin bir harf olup olmadığını, bir rakam olup olmadığını, bir yazdırılabilir karakter olup olmadığını veya bir ASCII karakteri olup olmadığını belirlemek gibi işlemleri içerir. Bu tür işlemler, genellikle karakter dizilerini veya kullanıcıdan alınan girdileri işlerken karakterlerin özelliklerini kontrol etmek için kullanılır.
+</p>
+
 ### Liste İşlemleri Nedir?
 <p align="left">
 Liste işlemleri, verilerin düğüm adı verilen birimler halinde organize edilmesi ve işlenmesi için kullanılan işlevlerdir. Bu işlevler, bir veri yapısında yeni bir düğüm oluşturmak, düğüm eklemek, düğüm silmek, düğüm aramak, düğüm sayısını hesaplamak gibi çeşitli işlemleri gerçekleştirir.
 </p>
+
+### Open Fonksiyonu Nedir? 
+<p align="left">
+open fonksiyonu, dosya sisteminden belirtilen dosyayı açmak için kullanılan bir POSIX işlevidir. Bu işlev, bir dosyanın okunması, yazılması veya hem okunup hem yazılması gibi farklı modlarda açılmasını sağlar. Dosya zaten açıksa var olan dosyayı çağırır. örnek kod:
+</p>
+
+```c
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+    int fd = open("dosya.txt", O_RDONLY);
+    if (fd == -1) {
+        perror("Dosya açma hatası");
+        return 1;
+    }
+    printf("Dosya başarıyla açıldı. Dosya Tanımlayıcı: %d\n", fd);
+
+    if (close(fd) == -1) {
+        perror("Dosya kapatma hatası");
+        return 1;
+    }
+    printf("Dosya başarıyla kapatıldı.\n");
+
+    return 0;
+}
+```
+Open onksiyonunda kullanılabilecek bayraklar şunlardır:
+
+- `O_RDONLY`: dosyanın salt okunur modda (read-only) açılmasını sağlayan bir işlem bayrağıdır.
+- `O_WRONLY`: Dosyanın sadece yazma modunda açılmasını sağlar.
+- `O_RDWR`: Dosyanın okuma ve yazma modunda açılmasını sağlar.
+- `O_CREAT`: Dosya yoksa oluşturulmasını sağlar.
+- `O_APPEND`: Dosyanın sonuna veri eklemeyi sağlar.
+- `O_TRUNC`: Dosyanın içeriğini sıfırlar (keser).
+- `O_EXCL`: Dosya varsa O_CREAT ile hata döndürür.
+Bu bayraklar `|` operatörüyle birleştirilerek aynı anda birden fazla bayrağın kullanılmasını sağlar. Örneğin, `O_RDONLY | O_CREAT` şeklinde kullanılabilir.
+
