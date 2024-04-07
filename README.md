@@ -37,12 +37,34 @@ Projeyi kullanmak için aşağıdaki adımları izleyebilirsiniz:
 ### Bellek İşlemleri
 
 - **ft_memset**: Belleği belirli bir değerle doldurur.
+  - Prototip: `void *ft_memset(void *s, int c, size_t n);`
+  - `s`: Belleği doldurulacak adresin başlangıç noktası.
+  - `c`: Bellekte doldurulacak karakter.
+  - `n`: Doldurulacak byte sayısı.
 - **ft_bzero**: Belleği sıfırlar.
+  - Prototip: `void ft_bzero(void *s, size_t n);`
+  - `s`: Sıfırlanacak bellek bloğunun başlangıç adresi.
+  - `n`: Sıfırlanacak byte sayısı.
 - **ft_memcpy**: Bellek bloğunu kopyalar.
-- **ft_memccpy**: Karakter bulunana kadar bellek bloğunu kopyalar.
+  - Prototip: `void *ft_memcpy(void *dest, const void *src, size_t n);`
+  - `dest`: Kopyalanan verinin hedef adresi.
+  - `src`: Kopyalanan verinin kaynak adresi.
+  - `n`: Kopyalanacak byte sayısı.
 - **ft_memmove**: Bellek bloğunu güvenli bir şekilde kopyalar.
+  - Prototip: `void *ft_memmove(void *dest, const void *src, size_t n);`
+  - `dest`: Kopyalanan verinin hedef adresi.
+  - `src`: Kopyalanan verinin kaynak adresi.
+  - `n`: Kopyalanacak byte sayısı.
 - **ft_memchr**: Belirli bir karakteri bellekte arar.
+  - Prototip: `void *ft_memchr(const void *s, int c, size_t n);`
+  - `s`: Arama yapılacak bellek bloğunun adresi.
+  - `c`: Aranan karakter.
+  - `n`: Arama yapılacak maksimum byte sayısı.
 - **ft_memcmp**: İki bellek bloğunu karşılaştırır.
+  - Prototip: `int ft_memcmp(const void *s1, const void *s2, size_t n);`
+  - `s1`: Karşılaştırılacak ilk bellek bloğunun adresi.
+  - `s2`: Karşılaştırılacak ikinci bellek bloğunun adresi.
+  - `n`: Karşılaştırılacak maksimum byte sayısı.
 
 ### Dize İşlemleri
 
