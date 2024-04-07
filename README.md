@@ -31,7 +31,7 @@ Projeyi çalıştırmak için herhangi bir özel gereksinim yoktur. Sadece C der
 Projeyi kullanmak için aşağıdaki adımları izleyebilirsiniz:
 
 1. Sağ Üstteki `<> Code` kısmına tıklayın.
-2. `Download Zip` kısmına tıklayın ve zip dosyasını indirin.
+2. Daha sonra `Download Zip` kısmına tıklayın ve zip dosyasını indirin.
 3. Bilgisayarınızdaki zip dosyasını açın.
 
 <!-- Fonksiyonlar -->
