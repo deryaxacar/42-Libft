@@ -144,12 +144,45 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `n`: Kopyalanacak byte sayısı.
   - Dönüş Değeri: Hedef adresi içeren bir işaretçi (dest).
 
+Örnek Kod:
+```c
+void	*ft_memmove(void *dst, const void *src, size_t n)
+{
+	if (!dst && !src)
+		return (NULL);
+	if (dst < src)
+		ft_memcpy(dst, src, n);
+	else if (dst > src)
+	{
+		while (n--)
+			*((unsigned char *)(dst + n)) = *((unsigned char *)(src + n));
+	}
+	return (dst);
+}
+```
+<p align="left">
+Bu fonksiyon, bir bellek bloğunu güvenli bir şekilde taşımak için kullanılır. Yani, src adresinden n kadar bellek alanını dst adresine kopyalar veya taşır. Ancak, bu fonksiyon dst ve src adreslerinin çakışmasına izin verir; yani, kopyalama işlemi sırasında hedef ve kaynak adresler arasında çakışma olabilir. Bu durumda, memcpy fonksiyonundan farklı olarak, memmove fonksiyonu daha güvenli bir kopyalama sağlar.
+dst ve src adreslerinin konumlarına göre kopyalama işlemi gerçekleştirilir:
+<ul>Eğer dst kaynak adresinden daha küçükse, bellek bloğu memcpy fonksiyonu kullanılarak kopyalanır.</ul>
+<ul>Eğer dst hedef adresinden daha büyükse, bellek bloğu geriye doğru (src adresinden dst adresine doğru) kopyalanır. </ul>
+
+Bu kodda overlap durumu bulunmaktadır [Notlar](#notlar) kısmından overlap durumu ile ilgili daha fazla bilgi edinebilirsiniz.
+</p>
+
 - **ft_memchr**: Belirli bir karakteri bellekte arar.
   - Prototip: `void *ft_memchr(const void *s, int c, size_t n);`
   - `s`: Arama yapılacak bellek bloğunun adresi.
   - `c`: Aranan karakter.
   - `n`: Arama yapılacak maksimum byte sayısı.
   - Dönüş Değeri: Bulunan karakterin adresi (s içinde), eğer karakter bulunamazsa NULL işareti.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 - **ft_memcmp**: İki bellek bloğunu karşılaştırır.
   - Prototip: `int ft_memcmp(const void *s1, const void *s2, size_t n);`
@@ -158,12 +191,28 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `n`: Karşılaştırılacak maksimum byte sayısı.
   - Dönüş Değeri: İlk farklı karakterin ASCII değerlerinin farkı (s1 ve s2 arasında). Eğer bloklar aynıysa 0 döner.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 ### Dize İşlemleri
 
 - **ft_strlen**: Bir dizenin uzunluğunu hesaplar.
   - Prototip: `size_t ft_strlen(const char *s);`
   - `s`: Uzunluğu hesaplanacak dizi.
   - Dönüş Değeri: Dizenin uzunluğu.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 - **ft_strlcpy**: Bir dizenin bir başka diziye güvenli bir şekilde kopyalanması.
   - Prototip: `size_t ft_strlcpy(char *dst, const char *src, size_t size);`
@@ -172,6 +221,14 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `size`: Kopyalanacak maksimum byte sayısı.
   - Dönüş Değeri: Kaynak dizinin uzunluğu.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_strlcat**: Bir dizenin bir başka dizeye güvenli bir şekilde eklenmesi.
   - Prototip: `size_t ft_strlcat(char *dst, const char *src, size_t size);`
   - `dst`: Dizeye eklenecek dizi.
@@ -179,17 +236,41 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `size`: Maksimum hedef dizinin boyutu.
   - Dönüş Değeri: Eklenen dizinin uzunluğu.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_strchr**: Bir karakteri bir dizide arar.
   - Prototip: `char *ft_strchr(const char *s, int c);`
   - `s`: Arama yapılacak dizi.
   - `c`: Aranan karakter.
   - Dönüş Değeri: Aranan karakterin adresi (s içinde), eğer karakter bulunamazsa NULL işareti.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_strrchr**: Bir karakteri bir dizide sondan arar.
   - Prototip: `char *ft_strrchr(const char *s, int c);`
   - `s`: Arama yapılacak dizi.
   - `c`: Aranan karakter.
   - Dönüş Değeri: Aranan karakterin sondan bulunduğu adres (s içinde), eğer karakter bulunamazsa NULL işareti.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 - **ft_strnstr**: Bir alt dizenin bir dizideki pozisyonunu bulur.
   - Prototip: `char *ft_strnstr(const char *haystack, const char *needle, size_t len);`
@@ -198,6 +279,14 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `len`: Arama yapılacak maksimum karakter sayısı.
   - Dönüş Değeri: Alt dizenin bulunduğu adres (haystack içinde), eğer alt dize bulunamazsa NULL işareti.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_strncmp**: İki dizeyi belirli bir sayıda karakterle karşılaştırır.
   - Prototip: `int ft_strncmp(const char *s1, const char *s2, size_t n);`
   - `s1`: Karşılaştırılacak ilk dizi.
@@ -205,20 +294,52 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `n`: Karşılaştırma yapılacak maksimum karakter sayısı.
   - Dönüş Değeri: Karşılaştırma sonucu, 0 (eşit), negatif (s1 < s2), pozitif (s1 > s2).
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_atoi**: Bir diziyi bir tam sayıya dönüştürür.
   - Prototip: `int ft_atoi(const char *str);`
   - `str`: Dönüştürülecek dizi.
   - Dönüş Değeri: Dönüştürülen tam sayı değeri.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 - **ft_itoa**: Bir tam sayıyı bir dizgiye dönüştürür.
   - Prototip: `char *ft_itoa(int n);`
   - `n`:  Dönüştürülecek tam sayı.
   - Dönüş Değeri: Dönüştürülen tam sayıyı içeren bir dizgi.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_strdup**: Bir dizinin kopyasını yapar.
   - Prototip: `char *ft_strdup(const char *s);`
   - `s`: Kopyalanacak dizi.
   - Dönüş Değeri: Yeni oluşturulan dizinin adresi.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 - **ft_striteri**: Bir dizenin her karakteri üzerinde belirtilen işlemi gerçekleştirir.
   - Prototip: `void ft_striteri(char *s, void (*f)(unsigned int, char*));`
@@ -226,11 +347,27 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `f`: Her karakter üzerinde çağrılacak işlev.
   - Dönüş Değeri: Yok (void). Sadece işlemi gerçekleştirir.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_strjoin**: İki diziyi birleştirir.
   - Prototip: `char *ft_strjoin(const char *s1, const char *s2);`
   - `s1`: Birleştirilecek ilk dizi.
   - `s2`: Birleştirilecek ikinci dizi.
   - Dönüş Değeri: Yeni oluşturulan birleştirilmiş dizi.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 - **ft_strmapi**: Bir dizenin her karakteri üzerinde belirtilen işlemi gerçekleştirir.
   - Prototip: `char *ft_strmapi(const char *s, char (*f)(unsigned int, char));`
@@ -238,11 +375,27 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `f`: Her karakter üzerinde çağrılacak işlev.
   - Dönüş Değeri: Yeni oluşturulan dizi.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_strtrim**: Bir dizenin başındaki ve sonundaki belirli karakterleri kaldırır.
   - Prototip: `char *ft_strtrim(const char *s1, const char *set);`
   - `s1`: İşlem yapılacak dize.
   - `set`: Kaldırılacak karakter kümesi.
   - Dönüş Değeri: Yeni oluşturulan düzeltilmiş dizi.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 - **ft_substr**: Bir alt dize oluşturur.
   - Prototip: `char *ft_substr(const char *s, unsigned int start, size_t len);`
@@ -251,21 +404,53 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `len`: Alt dizenin uzunluğu.
   - Dönüş Değeri: Yeni oluşturulan alt dizi.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_split**: Belirtilen ayırıcı karaktere göre bir dizeyi bölüp bir dize dizisi oluşturur.
   - Prototip: `char **ft_split(char const *s, char c);`
   - `s`: Bölünecek dize.
   - `c`: Ayırıcı karakter.
   - Dönüş Değeri: Oluşturulan dize dizisinin adresini içeren bir işaretçi.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_tolower**: Bir karakteri küçük harfe dönüştürür.
   - Prototip: `int ft_tolower(int c);`
   - `c`: Dönüştürülecek karakterin ASCII değeri.
   - Dönüş Değeri: Dönüştürülmüş karakterin ASCII değeri.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_toupper**: Bir karakteri büyük harfe dönüştürür.
   - Prototip: `int ft_toupper(int c);`
   - `c`: Dönüştürülecek karakterin ASCII değeri.
   - Dönüş Değeri: Dönüştürülmüş karakterin ASCII değeri.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 ### Karakter İşlemleri
 
@@ -274,25 +459,65 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `c`: Kontrol edilecek karakterin ASCII değeri.
   - Dönüş Değeri: Eğer karakter alfasayısal veya sayısal ise 1; aksi halde 0 döner.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_isalpha**: Bir karakterin alfasayısal olup olmadığını kontrol eder.
   - Prototip: `int ft_isalpha(int c);`
   - `c`: Kontrol edilecek karakterin ASCII değeri.
   - Dönüş Değeri: Eğer karakter alfasayısal ise 1; aksi halde 0 döner.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 - **ft_isascii**: Bir karakterin standart ASCII karakteri olup olmadığını kontrol eder.
   - Prototip: `int ft_isascii(int c);`
   - `c`: Kontrol edilecek karakterin ASCII değeri.
   - Dönüş Değeri: Eğer karakter standart ASCII ise 1; aksi halde 0 döner.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_isdigit**: Bir karakterin bir rakam karakteri olup olmadığını kontrol eder.
   - Prototip: `int ft_isdigit(int c);`
   - `c`: Kontrol edilecek karakterin ASCII değeri.
   - Dönüş Değeri: Eğer karakter bir rakam ise 1; aksi halde 0 döner.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_isprint**: Bir karakterin yazdırılabilir bir karakter olup olmadığını kontrol eder.
   - Prototip: `int ft_isprint(int c);`
   - `c`: Kontrol edilecek karakterin ASCII değeri.
   - Dönüş Değeri: Eğer karakter yazdırılabilir ise 1; aksi halde 0 döner.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 ## Bonus Fonksiyonlar
 ### Dosya İşlemleri
@@ -303,11 +528,27 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `fd`: Yazma işleminin yapılacağı dosya tanımlayıcısı.
   - Dönüş Değeri: Yok (void). Sadece işlemi gerçekleştirir.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_putendl_fd**: Bir diziyi belirtilen dosya tanımlayıcısına yazıp yeni bir satır ekler.
   - Prototip: `void ft_putendl_fd(char *s, int fd);`
   - `s`: Yazılacak dize.
   - `fd`: Yazma işleminin yapılacağı dosya tanımlayıcısı.
   - Dönüş Değeri: Yok (void). Sadece işlemi gerçekleştirir.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 - **ft_putnbr_fd**: Bir tam sayıyı belirtilen dosya tanımlayıcısına yazar.
   - Prototip: `void ft_putnbr_fd(int n, int fd);`
@@ -315,11 +556,27 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `fd`: Yazma işleminin yapılacağı dosya tanımlayıcısı.
   - Dönüş Değeri: Yok (void). Sadece işlemi gerçekleştirir.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_putchar_fd**: Bir karakteri belirtilen dosya tanımlayıcısına yazar.
   - Prototip: `void ft_putchar_fd(char c, int fd);`
   - `c`: Yazılacak karakter.
   - `fd`: Yazma işleminin yapılacağı dosya tanımlayıcısı.
   - Dönüş Değeri: Yok (void). Sadece işlemi gerçekleştirir.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 ### Liste işlemleri
 
@@ -328,21 +585,53 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `content`: Düğümün içeriği.
   - Dönüş Değeri: Oluşturulan yeni düğümün adresini içeren bir işaretçi (t_list *).
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_lstadd_front**: Başa bir düğüm ekler.
   - Prototip: `void ft_lstadd_front(t_list **lst, t_list *new);`
   - `lst`: Düğümün ekleneceği liste.
   - `new`: Eklenecek düğüm.
   - Dönüş Değeri: Yok (void). Sadece işlemi gerçekleştirir.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_lstsize**: Listenin eleman sayısını döndürür.
   - Prototip: `int ft_lstsize(t_list *lst);`
   - `lst`: Boyutu hesaplanacak liste.
   - Dönüş Değeri: Listenin eleman sayısı (int).
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_lstlast**: Listenin son elemanını döndürür.
   - Prototip: `t_list *ft_lstlast(t_list *lst);`
   - `lst`: Son elemanın bulunacağı liste.
   - Dönüş Değeri: Listenin son elemanının adresini içeren bir işaretçi (t_list *).
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 - **ft_lstadd_back**: Sona bir düğüm ekler.
   - Prototip: `void ft_lstadd_back(t_list **lst, t_list *new);`
@@ -350,11 +639,27 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `new`: Eklenecek düğüm.
   - Dönüş Değeri: Yok (void). Sadece işlemi gerçekleştirir.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_lstdelone**: Belirli bir düğümü siler.
   - Prototip: `void ft_lstdelone(t_list *lst, void (*del)(void*));`
   - `lst`: Silinecek düğüm.
   - `del`: Düğüm içeriğini silen işlev.
   - Dönüş Değeri: Yok (void). Sadece işlemi gerçekleştirir.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 - **ft_lstclear**: Tüm listeyi siler.
   - Prototip: `void ft_lstclear(t_list **lst, void (*del)(void*));`
@@ -362,11 +667,27 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `del`: Düğüm içeriğini silen işlev.
   - Dönüş Değeri: Yok (void). Sadece işlemi gerçekleştirir.
 
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
+
 - **ft_lstiter**: Bir fonksiyonu her liste elemanı için çağırır.
   - Prototip: `void ft_lstiter(t_list *lst, void (*f)(void*));`
   - `lst`: İşlem yapılacak liste.
   - `f`: Her düğüm için çağrılacak işlev.
   - Dönüş Değeri: Yok (void). Sadece işlemi gerçekleştirir.
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 - **ft_lstmap**: Bir fonksiyonu her liste elemanı için çağırır ve yeni bir liste oluşturur.
   - Prototip: `t_list *ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*));`
@@ -374,6 +695,14 @@ Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşüm�
   - `f`: Her düğüm için çağrılacak işlev.
   - `del`: Düğüm içeriğini silen işlev.
   - Dönüş Değeri: Yeni oluşturulan liste başının adresini içeren bir işaretçi (t_list *).
+
+Örnek Kod:
+```c
+
+```
+<p align="left">
+
+</p>
 
 ## Notlar
 
@@ -404,10 +733,9 @@ Liste işlemleri, verilerin düğüm adı verilen birimler halinde organize edil
 
 ### Malloc Nedir?
 <p align="left">
-malloc, C programlama dilinde dinamik bellek tahsis etmek için kullanılan bir fonksiyondur. Çalışma zamanında belirli bir boyutta bellek bloğu talep etmek için kullanılır.
+malloc, C programlama dilinde dinamik bellek tahsis etmek için kullanılan bir fonksiyondur. Çalışma zamanında belirli bir boyutta bellek bloğu talep etmek için kullanılır. Örnek Kod:
 </p>
 
-Örnek Kod:
 ```c
 int main() {
     // 10 integer değeri için bellek tahsis et
@@ -439,10 +767,9 @@ calloc, bellek tahsis etmek için kullanılan bir işlevdir. "Calloc" kelimesi "
 
 ### Type Casting (Tür Dönüşümü) Nedir?
 <p align="left">
-Tip dönüşümü veya type casting, bir veri türünün diğerine dönüştürülmesi işlemidir. Bu işlem, bir değişkenin veri türünü değiştirmek veya bir ifade veya değerin beklenen veri türüne dönüştürmek için yapılır. Örneğin, bir tamsayıyı ondalık sayıya dönüştürmek veya bir karakter dizisini tamsayıya dönüştürmek gibi durumlar tip dönüşümü gerektirir. Tip dönüşümü, programcının veri türlerini uygun şekilde işlemesini sağlar ve veri türü uyumsuzluklarını giderir.
+Tip dönüşümü veya type casting, bir veri türünün diğerine dönüştürülmesi işlemidir. Bu işlem, bir değişkenin veri türünü değiştirmek veya bir ifade veya değerin beklenen veri türüne dönüştürmek için yapılır. Örneğin, bir tamsayıyı ondalık sayıya dönüştürmek veya bir karakter dizisini tamsayıya dönüştürmek gibi durumlar tip dönüşümü gerektirir. Tip dönüşümü, programcının veri türlerini uygun şekilde işlemesini sağlar ve veri türü uyumsuzluklarını giderir. Örnek Kod:
 </p>
 
-Örnek Kod:
 ```c
 #include <stdio.h>
 
@@ -455,6 +782,41 @@ int main() {
 
     printf("a: %d\n", a);
     printf("b: %.2f\n", b);
+
+    return 0;
+}
+```
+### Overlap (Çakışma) Durumu Nedir?
+<p align="left">
+Overlap, genellikle birbirini takip eden iki nesnenin veya olayın aynı alana veya sürece denk gelmesi durumunu ifade eder. Özellikle programlama bağlamında, overlap, bellek bloklarının veya veri yapılarının aynı bellek alanında veya aynı zaman aralığında yer alması durumunu ifade eder. Bu durum, bellek hataları, veri bütünlüğü sorunları veya beklenmedik davranışlara neden olabilir. Overlap durumları genellikle programların düzeltilmesi gereken hatalarını belirtir. Örnek Kod:
+</p>
+
+```c
+#include <stdio.h>
+
+// overlap fonksiyonu, iki dizinin çakışıp çakışmadığını kontrol eder
+int overlap(int arr1[], int size1, int arr2[], int size2) {
+    // Birinci dizinin son elemanı ikinci dizinin ilk elemanından küçükse veya
+    // ikinci dizinin son elemanı birinci dizinin ilk elemanından küçükse çakışma yoktur
+    if (arr1[size1 - 1] < arr2[0] || arr2[size2 - 1] < arr1[0]) {
+        return 0; // Çakışma yok
+    } else {
+        return 1; // Çakışma var
+    }
+}
+
+int main() {
+    int arr1[] = {1, 2, 3, 4, 5};
+    int arr2[] = {4, 5, 6, 7, 8};
+    
+    int size1 = sizeof(arr1) / sizeof(arr1[0]);
+    int size2 = sizeof(arr2) / sizeof(arr2[0]);
+
+    if (overlap(arr1, size1, arr2, size2)) {
+        printf("Diziler çakışıyor.\n");
+    } else {
+        printf("Diziler çakışmıyor.\n");
+    }
 
     return 0;
 }
