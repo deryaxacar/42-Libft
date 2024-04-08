@@ -8,7 +8,7 @@
 
 <!-- Proje Logosu veya Görseli -->
 <p align="center">
-  <img src="https://github.com/ayogun/42-project-badges/blob/main/badges/libftm.png" alt="Proje Logo">
+  <a target="blank"><img src="https://i.hizliresim.com/ffa3w9y.png" height="150" width="150" /></a>
 </p>
 
 <!-- Proje Başlıkları ve İçindekiler -->
