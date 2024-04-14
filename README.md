@@ -24,7 +24,6 @@
   - [Overlap (Çakışma) Durumu Nedir?](#overlap-çakışma-durumu-nedir)
   - [Static Nedir?](#static-nedir)
   - [size_t Nedir?](#size_t-nedir)
-  - [Static Nedir?](#static-nedir)
   - [Open Fonksiyonu Nedir?](#open-fonksiyonu-nedir)
 
 Düzeltme yapıldıktan sonra bağlantılar doğru bir şekilde çalışacaktır.
