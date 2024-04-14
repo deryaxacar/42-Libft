@@ -13,13 +13,22 @@
 
 <!-- Proje Başlıkları ve İçindekiler -->
 ## İçindekiler
-
 - [Gereksinimler](#gereksinimler)
 - [Kullanım](#kullanım)
 - [Fonksiyonlar](#fonksiyonlar)
 - [Bonus Fonksiyonlar](#bonus-fonksiyonlar)
 - [Notlar](#notlar)
-  
+  - [Malloc Nedir?](#malloc-nedir)
+  - [Calloc Nedir?](#calloc-nedir)
+  - [Type Casting (Tür Dönüşümü) Nedir?](#type-casting-tür-dönüşümü-nedir)
+  - [Overlap (Çakışma) Durumu Nedir?](#overlap-çakışma-durumu-nedir)
+  - [Static Nedir?](#static-nedir)
+  - [size_t Nedir?](#size_t-nedir)
+  - [Static Nedir?](#static-nedir)
+  - [Open Fonksiyonu Nedir?](#open-fonksiyonu-nedir)
+
+Düzeltme yapıldıktan sonra bağlantılar doğru bir şekilde çalışacaktır.
+ 
 <!-- Gereksinimler -->
 ## Gereksinimler
 
