@@ -1,5 +1,5 @@
 <!-- Proje İlişkin Başlık -->
-<h1 align="center">42 - Libft</h1>
+<h1 align="center">42 - Libft 📚</h1>
 
 <!-- Proje Açıklaması -->
 <p align="center">
@@ -12,29 +12,29 @@
 </p>
 
 <!-- Proje Başlıkları ve İçindekiler -->
-## İçindekiler
+## İçindekiler 📚
 - [Gereksinimler](#gereksinimler)
 - [Kullanım](#kullanım)
 - [Fonksiyonlar](#fonksiyonlar)
 - [Bonus Fonksiyonlar](#bonus-fonksiyonlar)
 - [Notlar](#notlar)
-  - [Malloc Nedir?](#malloc-nedir)
-  - [Calloc Nedir?](#calloc-nedir)
-  - [Type Casting (Tür Dönüşümü) Nedir?](#type-casting-tür-dönüşümü-nedir)
-  - [Overlap (Çakışma) Durumu Nedir?](#overlap-çakışma-durumu-nedir)
-  - [Static Nedir?](#static-nedir)
-  - [size_t Nedir?](#size_t-nedir)
-  - [Open Fonksiyonu Nedir?](#open-fonksiyonu-nedir)
+  - [Malloc Nedir?](#malloc-nedir) 
+  - [Calloc Nedir?](#calloc-nedir) 
+  - [Type Casting (Tür Dönüşümü) Nedir?](#type-casting-tür-dönüşümü-nedir) 
+  - [Overlap (Çakışma) Durumu Nedir?](#overlap-çakışma-durumu-nedir) 
+  - [Static Nedir?](#static-nedir) 
+  - [size_t Nedir?](#size_t-nedir) 
+  - [Open Fonksiyonu Nedir?](#open-fonksiyonu-nedir) 
 
 Düzeltme yapıldıktan sonra bağlantılar doğru bir şekilde çalışacaktır.
  
 <!-- Gereksinimler -->
-## Gereksinimler
+## Gereksinimler 
 
 Projeyi çalıştırmak için herhangi bir özel gereksinim yoktur. Sadece C derleyicisine (gcc gibi) ve bir terminal arayüzüne ihtiyacınız vardır.
 
 <!-- Kullanım -->
-## Kullanım
+## Kullanım 
 
 Projeyi kullanmak için aşağıdaki adımları izleyebilirsiniz:
 
@@ -43,7 +43,7 @@ Projeyi kullanmak için aşağıdaki adımları izleyebilirsiniz:
 3. Bilgisayarınızdaki zip dosyasını açın.
 
 <!-- Fonksiyonlar -->
-## Fonksiyonlar
+## Fonksiyonlar 
 
 ### Bellek İşlemleri
 
