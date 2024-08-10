@@ -1068,7 +1068,10 @@ Bu fonksiyon, verilen bir karakterin basılabilir (printable) karakter olup olma
 
 ---
 
-## Bonus Fonksiyonlar
+<h1 align="center">Bonus Fonksiyonlar</h1> 
+
+---
+
 ### Dosya İşlemleri
 
 - **ft_putstr_fd**: Bir diziyi belirtilen dosya tanımlayıcısına yazar.
@@ -1422,7 +1425,9 @@ Bu fonksiyon, verilen bir işlevi (`f`) bir listedeki her düğümün içeriği 
 
 ---
 
-## Notlar
+<h1 align="center">Notlar</h1> 
+
+---
 
 ### Bellek İşlemleri Nedir?
 <p align="left">
