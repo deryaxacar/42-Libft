@@ -26,8 +26,6 @@
   - [size_t Nedir?](#size_t-nedir) 
   - [Open Fonksiyonu Nedir?](#open-fonksiyonu-nedir) 
 
-Düzeltme yapıldıktan sonra bağlantılar doğru bir şekilde çalışacaktır.
- 
 <!-- Gereksinimler -->
 ## Gereksinimler 
 
