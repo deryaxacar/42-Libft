@@ -26,11 +26,14 @@
   - [size_t Nedir?](#size_t-nedir) 
   - [Open Fonksiyonu Nedir?](#open-fonksiyonu-nedir) 
 
+---
+
 <!-- Gereksinimler -->
 ## Gereksinimler 
 
 Projeyi çalıştırmak için herhangi bir özel gereksinim yoktur. Sadece C derleyicisine (gcc gibi) ve bir terminal arayüzüne ihtiyacınız vardır.
 
+---
 <!-- Kullanım -->
 ## Kullanım 
 
@@ -40,8 +43,13 @@ Projeyi kullanmak için aşağıdaki adımları izleyebilirsiniz:
 2. Daha sonra `Download Zip` kısmına tıklayın ve zip dosyasını indirin.
 3. Bilgisayarınızdaki zip dosyasını açın.
 
+---
+
 <!-- Fonksiyonlar -->
-## Fonksiyonlar 
+
+<h1 align="center">Fonksiyonlar</h1> 
+
+---
 
 ### Bellek İşlemleri
 
