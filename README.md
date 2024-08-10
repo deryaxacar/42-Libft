@@ -72,6 +72,8 @@ void	*ft_memset(void *s, int c, size_t n)
 Açıklama: s adresindeki bellek bloğunu n bayt boyunca c değeriyle doldurur. İşlev, her doldurma işleminden sonra bellek bloğunun sonraki baytına geçer ve işlem n bayt doldurulana kadar devam eder. Sonunda, fonksiyon s adresine işaret eden bir işaretçi döndürür.
 </p>
 
+---
+
 - **ft_bzero**: Belleği sıfırlar.
   - Prototip: `void ft_bzero(void *s, size_t n);`
   - `s`: Sıfırlanacak bellek bloğunun başlangıç adresi.
@@ -88,6 +90,8 @@ void	ft_bzero(void *s, size_t n)
 <p align="left">
 Açıklama: ft_memset işlevini çağırır ve bu işlev aracılığıyla bellek bloğunu 0 ile doldurur. Yani, ft_bzero aslında ft_memset fonksiyonunu çağırmakla görevlidir. 
 </p>
+
+---
 
 - **ft_calloc**: Belirtilen boyutta bellek bloğu tahsis eder ve sıfırlar.
   - Prototip: `void *ft_calloc(size_t count, size_t size);`
@@ -111,6 +115,8 @@ void	*ft_calloc(size_t count, size_t size)
 <p align="left">
 Açıklama: Belirtilen boyutta bir bellek bloğu tahsis eder ve tüm alanlarını sıfırlar. Öncelikle, malloc fonksiyonuyla bellek tahsis edilir. Ardından, tahsis edilen belleğin tüm alanları ft_bzero fonksiyonu ile sıfırla doldurulur ve başlangıç adresi döndürülür.
 </p>
+
+---
 
 - **ft_memcpy**: Bellek bloğunu kopyalar.
   - Prototip: `void *ft_memcpy(void *dest, const void *src, size_t n);`
@@ -141,6 +147,8 @@ Açıklama: İlk olarak, hedef (dst) ve kaynak (src) bellek bloklarının adresl
 </p>
 
 Not : Bu fonksiyonda öncekilerden farklı olarak type casting(tür dönüşümü) bulunmakta [Notlar](#notlar) kısmından type casting ile ilgili daha fazla bilgi edinebilirsiniz.
+
+---
 
 - **ft_memmove**: Bellek bloğunu güvenli bir şekilde kopyalar.
   - Prototip: `void *ft_memmove(void *dest, const void *src, size_t n);`
@@ -174,6 +182,8 @@ dst ve src adreslerinin konumlarına göre kopyalama işlemi gerçekleştirilir:
 Not: Bu kodda overlap durumunun önüne geçmek için tersten kopyalama yapılmıştır. [Notlar](#notlar) kısmından overlap durumu ile ilgili daha fazla bilgi edinebilirsiniz.
 </p>
 
+---
+
 - **ft_memchr**: Belirli bir karakteri bellekte arar.
   - Prototip: `void *ft_memchr(const void *s, int c, size_t n);`
   - `s`: Arama yapılacak bellek bloğunun adresi.
@@ -201,6 +211,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 <p align="left">
 Bu fonksiyon, bellek bloğunda n byte boyunca dolaşarak c karakterini arar. Her bir byte üzerinde dolaşırken, aranan karakter bulunursa, bulunan karakterin adresini döndürür. Eğer karakter bulunamazsa NULL işaretini döndürür.
 </p>
+
+---
 
 - **ft_memcmp**: İki bellek bloğunu karşılaştırır.
   - Prototip: `int ft_memcmp(const void *s1, const void *s2, size_t n);`
@@ -233,6 +245,8 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 Bu fonksiyon iki bellek bloğunu byte olarak karşılaştırır. İki bellek bloğunun karşılaştırılması sırasında, bellek bloklarındaki her bir byte'ın değeri diğer bellek bloğundaki karşılık gelen byte'ın değeriyle karşılaştırılır. Eğer iki byte birbirinden farklıysa, bu iki byte'nin farkını döndürür. Eğer tüm byte'lar eşit ise, 0 değerini döndürür. Bu şekilde, bellek bloklarının içeriğinin tam olarak aynı olup olmadığına göre karşılaştırma yapar.
 </p>
 
+---
+
 ### Dize İşlemleri
 
 - **ft_strlen**: Bir dizenin uzunluğunu hesaplar.
@@ -260,6 +274,8 @@ size_t	ft_strlen(const char *s)
 <p align="left">
 Bu fonksiyon, verilen bir dizinin uzunluğunu hesaplar. Dizi içerisindeki karakterlerin her birini dolaşarak, dizinin sonunda '\0' (NULL) karakterini bulana kadar karakter sayısını hesaplar ve bu sayıyı döndürür.
 </p>
+
+---
 
 - **ft_strlcpy**: Bir dizenin bir başka diziye güvenli bir şekilde kopyalanması.
   - Prototip: `size_t ft_strlcpy(char *dst, const char *src, size_t size);`
@@ -292,6 +308,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 <p align="left">
 Bu fonksiyon, bir kaynak dizinin içeriğini, belirtilen hedef diziye, belirtilen boyutta kopyalar. Ancak, kopyalama işlemi, hedef dizinin kapasitesini aşmaması için belirli bir boyut sınırlamasına tabidir. Kopyalama işlemi sırasında, kaynak dizideki karakterler hedef diziye kopyalanır ve sonuna '\0' (NULL) karakteri eklenerek dizinin sonlandırılması sağlanır. Son olarak, kaynak dizinin toplam uzunluğu hesaplanarak döndürülür.
 </p>
+
+---
 
 - **ft_strlcat**: Bir dizenin bir başka dizeye güvenli bir şekilde eklenmesi.
   - Prototip: `size_t ft_strlcat(char *dst, const char *src, size_t size);`
@@ -327,6 +345,8 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 Bu fonksiyon, bir hedef diziye (dest) bir kaynak dizinin (src) içeriğini eklemek için kullanılır. Ancak, hedef dizinin belirli bir boyutunu (size) aşmaması için kontrol edilir. Fonksiyon, hedef dizinin içeriğini ölçer (leng) ve hedef dizinin mevcut uzunluğu ile eklemek istenen kaynak dizinin uzunluğunu karşılaştırır. Eğer hedef dizinin boyutu kaynak dizinin eklenmesi gereken boyuta yetmiyorsa ve hedef dizinin boyutu 0'dan büyükse, eklemeye devam edilir. Eklenen kaynak dizisi sonlandırıcı karakteri ('\0') ile bitirilir ve son olarak hedef dizinin uzunluğu geri döndürülür.
 </p>
 
+---
+
 - **ft_strchr**: Bir karakteri bir dizide arar.
   - Prototip: `char *ft_strchr(const char *s, int c);`
   - `s`: Arama yapılacak dizi.
@@ -349,6 +369,8 @@ char	*ft_strchr(const char *s, int c)
 <p align="left">
 Bu kod, bir karakter dizisinde belirli bir karakterin ilk bulunduğu konumu bulmak için kullanılır. Karakter dizisi üzerinde dolaşarak, belirli karakteri bulduğunda bulunduğu konumu işaret eden bir adres döndürür. Eğer belirli karakter bulunmazsa, NULL değeri döndürür.
 </p>
+
+---
 
 - **ft_strrchr**: Bir karakteri bir dizide sondan arar.
   - Prototip: `char *ft_strrchr(const char *s, int c);`
@@ -375,6 +397,8 @@ char	*ft_strrchr(const char *s, int c)
 <p align="left">
 Bu fonksiyon, bir karakter dizisinde (s) sağdan sola doğru bir karakter arar. Karakter dizisi içindeki son bulunan belirli bir karakterin adresini döndürür. Eğer karakter bulunamazsa NULL değeri döner.
 </p>
+
+---
 
 - **ft_strnstr**: Bir alt dizenin bir dizideki pozisyonunu bulur.
   - Prototip: `char *ft_strnstr(const char *haystack, const char *needle, size_t len);`
@@ -412,6 +436,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 Bu kod, bir ana dizede (haystack) belirli bir alt dizenin (needle) ilk bulunduğu konumu aramak için kullanılır. İki dize arasında dolaşarak, alt dizenin ilk karakterini bulduğunda, alt dizenin tamamının ana dizede bulunup bulunmadığını kontrol eder. Eğer alt dize bulunursa, bulunduğu konumu işaret eden bir adres döndürür. Eğer alt dize bulunmazsa veya aramaya devam edilecek karakter sayısı (len) sıfıra ulaşırsa, NULL değeri döndürür.
 </p>
 
+---
+
 - **ft_strncmp**: İki dizeyi belirli bir sayıda karakterle karşılaştırır.
   - Prototip: `int ft_strncmp(const char *s1, const char *s2, size_t n);`
   - `s1`: Karşılaştırılacak ilk dizi.
@@ -438,6 +464,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t size)
 <p align="left">
 Bu fonksiyon, iki dizeyi belirli bir boyutta karşılaştırır. İki dize arasında karakter karşılaştırması yapar ve eşit olmayan bir karakter bulduğunda, bu karakterlerin ASCII değerlerinin farkını döndürür. Eğer iki dize belirtilen boyutta aynıysa, yani hiçbir karakter farklı değilse veya boyut sınırına ulaşılırsa, 0 değerini döndürür.
 </p>
+
+---
 
 - **ft_atoi**: Bir diziyi bir tam sayıya dönüştürür.
   - Prototip: `int ft_atoi(const char *str);`
@@ -477,6 +505,8 @@ int	ft_atoi(const char *str)
 <p align="left">
 Bu fonksiyon, bir karakter dizisini (string) tam sayıya dönüştürür. Dizideki karakterleri taramak suretiyle sayısal değeri bulur ve bu değeri döndürür. Fonksiyon, boşlukları ve tab karakterlerini (ASCII değerleri 9 ile 13 arasındaki karakterler) görmezden gelir. Eğer dize başında negatif (-) veya pozitif (+) işareti varsa, bunu dikkate alarak dönüşü yapar. Ancak, dize içerisindeki karakterlerin bir sayıyı ifade etmediği durumda (örneğin, bir harf ya da özel karakter), dönüşüme son verir ve o ana kadar elde edilen değeri döndürür.
 </p>
+
+---
 
 - **ft_itoa**: Bir tam sayıyı bir dizgiye dönüştürür.
   - Prototip: `char *ft_itoa(int n);`
@@ -535,6 +565,8 @@ Bu fonksiyon, bir tamsayıyı karakter dizisine (string) dönüştürür. İlk o
 
 Not : Bu fonksiyonda öncekilerden farklı olarak static bir fonksiyon bulunmakta [Notlar](#notlar) kısmından static fonksiyon ile ilgili daha fazla bilgi edinebilirsiniz.
 
+---
+
 - **ft_strdup**: Bir dizinin kopyasını yapar.
   - Prototip: `char *ft_strdup(const char *s);`
   - `s`: Kopyalanacak dizi.
@@ -565,6 +597,8 @@ char	*ft_strdup(const char *s)
 <p align="left">
 Bu fonksiyon, bir karakter dizisinin (s) bellekte yeni bir alan tahsis ederek kopyasını oluşturur ve bu kopyanın adresini döndürür. Bellek tahsis etme işlemi malloc fonksiyonu ile yapılır. Ardından, karakter dizisinin uzunluğu hesaplanır ve bu uzunluk kadar bellekte yer ayrılır. Dizideki her karakter kopyalanarak yeni bellek bloğuna yerleştirilir. Son olarak, yeni dizinin sonuna null karakter ('\0') eklenir ve bu diziye ait adres döndürülür. Eğer bellek tahsis işlemi başarısız olursa (malloc NULL döndürürse), fonksiyon da NULL döndürür.
 </p>
+
+---
 
 - **ft_striteri**: Bir dizenin her karakteri üzerinde belirtilen işlemi gerçekleştirir.
   - Prototip: `void ft_striteri(char *s, void (*f)(unsigned int, char*));`
@@ -615,6 +649,8 @@ int main() {
 mainde bir string oluşturduk (str) yukarıda da yazdırma fonksiyonumuz var (print_char), ft_striteri fonksiyonuna stringimizi (str) ve yazdırma fonksiyonumuzu (print_char) yolladık ve while koşulu sağlandığı sürece yazdırma fonksiyonuna stringin indexlerini teker teker gönderip yazdırıp indexini arttırıcaktır.
 </p>
 
+---
+
 - **ft_strjoin**: İki diziyi birleştirir.
   - Prototip: `char *ft_strjoin(const char *s1, const char *s2);`
   - `s1`: Birleştirilecek ilk dizi.
@@ -654,6 +690,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 Bu fonksiyon, verilen iki dizgiyi birleştirerek yeni bir dizi oluşturur. İlk olarak, birleştirilecek dizgilerin uzunlukları hesaplanır. Daha sonra, toplam uzunluk kadar bellek tahsis edilir ve bu belleğe ilk dizgi kopyalanır. Ardından, ikinci dizgi de kopyalanır ve sonuna '\0' (NULL karakteri) eklenerek yeni birleştirilmiş dizgi oluşturulur. Oluşturulan bu yeni dizgi bellek bloğunun adresi ile geri döndürülür. Eğer gerekli bellek tahsis edilemezse veya herhangi bir dizi NULL ise, NULL değeri döndürülür.
 </p>
 
+---
+
 - **ft_strmapi**: Bir dizenin her karakteri üzerinde belirtilen işlemi gerçekleştirir.
   - Prototip: `char *ft_strmapi(const char *s, char (*f)(unsigned int, char));`
   - `s`: İşlem yapılacak dize.
@@ -685,6 +723,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 <p align="left">
 Bu fonksiyon, verilen bir girdi dizgisinde her bir karakter üzerinde belirli bir işlemi gerçekleştiren ve sonucunu yeni bir diziye yerleştiren işlevi ifade eder. Fonksiyon, iki parametre alır: birinci parametre, işlem yapılacak olan giriş dizgisidir; ikinci parametre ise, işlemin nasıl gerçekleştirileceğini belirleyen bir işlev göstericisidir. İşlev, giriş dizgisi üzerinde döngü kullanarak her bir karakter için belirtilen işlevi çağırır ve işlevin dönüş değerlerini yeni bir diziye yerleştirir. Son olarak, işlenmiş dizgi, işlevin sonucu olarak döndürülür. Eğer giriş dizgisi NULL ise veya bellek tahsis edilemezse, NULL dönüş değeri verilir.
 </p>
+
+---
 
 - **ft_strtrim**: Bir dizenin başındaki ve sonundaki belirli karakterleri kaldırır.
   - Prototip: `char *ft_strtrim(const char *s1, const char *set);`
@@ -739,6 +779,8 @@ Bu fonksiyon, başında veya sonunda belirli bir karakter kümesi bulunan bir di
 İlk olarak, giriş dizgisinin başındaki ve sonundaki karakter kümesi geçen kısımlar tespit edilir ve bu bölgelerin başlangıç ve bitiş indeksleri hesaplanır. Sonrasında, başlangıç ve bitiş indeksleri arasındaki kısmı kopyalamak için bellek tahsis edilir ve bu kısmın içine giriş dizgisinin sadece istenilen kısımları kopyalanır. Son olarak, yeni dizi oluşturulur ve işlenmiş dizgi bu diziye kopyalanır. Eğer giriş dizgisi veya karakter kümesi NULL ise, NULL dönüş değeri verilir.
 </p>
 
+---
+
 - **ft_substr**: Bir alt dize oluşturur.
   - Prototip: `char *ft_substr(const char *s, unsigned int start, size_t len);`
   - `s`: İşlem yapılacak dize.
@@ -785,6 +827,8 @@ Fonksiyon, başlangıç indeksinden başlayarak belirtilen uzunlukta olan karakt
 <p align="left">
 İlk olarak, giriş dizisinin uzunluğu kontrol edilir ve başlangıç indeksi uygun bir aralıkta mı diye kontrol edilir. Sonrasında, belirtilen uzunluktaki karakterleri içerecek kadar bellek tahsis edilir ve bu karakterler yeni diziye kopyalanır. Son olarak, oluşturulan alt dizeyi içeren yeni dizi dönüş değeri olarak verilir. Eğer giriş dizisi NULL ise, NULL dönüş değeri verilir.
 </p>
+
+---
 
 - **ft_split**: Belirtilen ayırıcı karaktere göre bir dizeyi bölüp bir dize dizisi oluşturur.
   - Prototip: `char **ft_split(char const *s, char c);`
@@ -881,6 +925,8 @@ Bu kod, verilen bir dizedeki kelimeleri belirli bir ayırıcı karaktere göre p
 Yani kısaca, bir dizedeki kelimeleri belirli bir ayırıcı karaktere göre parçalara böler. Dize içindeki her kelimeyi ayrıştırır ve ayrıca bellekte her bir kelime için ayrılan hafızayı serbest bırakır. Son olarak, parçalanmış kelimeleri içeren bir dizi döndürür.
 </p>
 
+---
+
 - **ft_tolower**: Bir karakteri küçük harfe dönüştürür.
   - Prototip: `int ft_tolower(int c);`
   - `c`: Dönüştürülecek karakterin ASCII değeri.
@@ -899,6 +945,8 @@ int	ft_tolower(int c)
 Bu kod, verilen bir karakteri küçük harfe dönüştürmek için kullanılır. Fonksiyon, verilen karakterin ASCII değerini kontrol eder. Eğer verilen karakter büyük bir harfse (ASCII değeri 65 ile 90 arasında ise), küçük harfe dönüştürmek için ASCII değerine 32 ekler. Aksi halde, karakteri olduğu gibi geri döndürür. Bu işlem sonucunda dönüştürülen karakterin ASCII değeri, küçük harfe karşılık gelen ASCII değeri olur.
 </p>
 
+---
+
 - **ft_toupper**: Bir karakteri büyük harfe dönüştürür.
   - Prototip: `int ft_toupper(int c);`
   - `c`: Dönüştürülecek karakterin ASCII değeri.
@@ -916,6 +964,8 @@ int	ft_toupper(int c)
 <p align="left">
 Bu kod, verilen bir karakteri büyük harfe dönüştürmek için kullanılır. Fonksiyon, verilen karakterin ASCII değerini kontrol eder. Eğer verilen karakter küçük bir harfse (ASCII değeri 'a' ile 'z' arasında ise), büyük harfe dönüştürmek için ASCII değerinden 32 çıkarır. Aksi halde, karakteri olduğu gibi geri döndürür. Bu işlem sonucunda dönüştürülen karakterin ASCII değeri, büyük harfe karşılık gelen ASCII değeri olur.
 </p>
+
+---
 
 ### Karakter İşlemleri
 
@@ -936,6 +986,8 @@ int	ft_isalnum(int c)
 Bu kod, verilen bir karakterin alfasayısal (harf veya rakam) olup olmadığını kontrol eder. ft_isalpha ve ft_isdigit fonksiyonlarını kullanarak, verilen karakterin hem bir harf hem de bir rakam olup olmadığını kontrol eder. Eğer verilen karakter bir harf ise veya bir rakamsa, fonksiyon 1 değerini döndürür (doğru). Aksi halde, 0 değerini döndürür (yanlış). Bu sayede, verilen karakterin alfasayısal olup olmadığını belirlemek için kullanılabilir.
 </p>
 
+---
+
 - **ft_isalpha**: Bir karakterin alfasayısal olup olmadığını kontrol eder.
   - Prototip: `int ft_isalpha(int c);`
   - `c`: Kontrol edilecek karakterin ASCII değeri.
@@ -951,6 +1003,8 @@ int	ft_isalpha(int c)
 <p align="left">
 Bu kod, verilen bir karakterin bir alfabetik karakter olup olmadığını kontrol eder. Karakterin 'a' ile 'z' arasında veya 'A' ile 'Z' arasında olup olmadığını kontrol eder. Eğer verilen karakter alfabede bir harf ise, fonksiyon 1 değerini döndürür (doğru). Aksi halde, 0 değerini döndürür (yanlış). Bu sayede, verilen karakterin alfabede bir harf olup olmadığını belirlemek için kullanılabilir.
 </p>
+
+---
 
 - **ft_isascii**: Bir karakterin standart ASCII karakteri olup olmadığını kontrol eder.
   - Prototip: `int ft_isascii(int c);`
@@ -968,6 +1022,8 @@ int	ft_isascii(int c)
 Bu kod, verilen bir karakterin ASCII karakter setine ait olup olmadığını kontrol eder. ASCII karakter setindeki karakterler 0 ile 127 arasında yer alır. Dolayısıyla, bu fonksiyon, verilen karakterin 0 (dahil) ile 127 (hariç) arasında olup olmadığını kontrol eder. Eğer karakter ASCII karakter setine aitse, yani 0 ile 127 arasında bir değerse, fonksiyon 1 değerini döndürür (doğru). Aksi halde, 0 değerini döndürür (yanlış). Bu fonksiyon, bir karakterin ASCII karakter setine ait olup olmadığını belirlemek için kullanılabilir.
 </p>
 
+---
+
 - **ft_isdigit**: Bir karakterin bir rakam karakteri olup olmadığını kontrol eder.
   - Prototip: `int ft_isdigit(int c);`
   - `c`: Kontrol edilecek karakterin ASCII değeri.
@@ -984,6 +1040,8 @@ int	ft_isdigit(int c)
 Bu fonksiyon, verilen bir karakterin bir rakam karakteri olup olmadığını kontrol eder. Rakam karakterleri '0' ile '9' arasında ASCII kodlarına sahiptir. Dolayısıyla, bu fonksiyon verilen karakterin bu aralıkta olup olmadığını kontrol eder. Eğer verilen karakter bir rakam karakteri ise, fonksiyon doğru (1) değerini döndürür. Aksi takdirde, yanlış (0) değerini döndürür. Bu fonksiyon, bir karakterin rakam olup olmadığını belirlemek için kullanılır.
 </p>
 
+---
+
 - **ft_isprint**: Bir karakterin yazdırılabilir bir karakter olup olmadığını kontrol eder.
   - Prototip: `int ft_isprint(int c);`
   - `c`: Kontrol edilecek karakterin ASCII değeri.
@@ -999,6 +1057,8 @@ int	ft_isprint(int c)
 <p align="left">
 Bu fonksiyon, verilen bir karakterin basılabilir (printable) karakter olup olmadığını kontrol eder. Basılabilir karakterler ASCII kod 32 ile 126 arasındadır ve klavye üzerinde yazdırılabilir karakterlerin çoğunu temsil eder. Fonksiyon, verilen karakterin bu aralıkta olup olmadığını kontrol eder. Eğer verilen karakter bir basılabilir karakter ise, fonksiyon doğru (1) değerini döndürür. Aksi takdirde, yanlış (0) değerini döndürür. Bu fonksiyon, bir karakterin ekrana yazdırılabilir olup olmadığını kontrol etmek için kullanılır.
 </p>
+
+---
 
 ## Bonus Fonksiyonlar
 ### Dosya İşlemleri
@@ -1028,6 +1088,8 @@ void	ft_putstr_fd(char *s, int fd)
 Bu fonksiyon, verilen bir karakter dizisini (string) belirtilen dosya tanımlayıcısına (fd) yazdırmak için kullanılır. Karakter dizisi s üzerinde döngü kullanarak her bir karakteri tek tek ft_putchar_fd fonksiyonu aracılığıyla belirtilen dosya tanımlayıcısına yazdırır. Sonuç olarak, bu fonksiyon verilen karakter dizisini belirtilen dosya tanımlayıcısına yazdırır.
 </p>
 
+---
+
 - **ft_putendl_fd**: Bir diziyi belirtilen dosya tanımlayıcısına yazıp yeni bir satır ekler.
   - Prototip: `void ft_putendl_fd(char *s, int fd);`
   - `s`: Yazılacak dize.
@@ -1048,6 +1110,8 @@ void	ft_putendl_fd(char *s, int fd)
 <p align="left">
 Bu fonksiyon, verilen bir karakter dizisini (s) belirtilen dosya tanımlayıcısına (fd) yazdırmak için kullanılır. Ancak yazdırma işleminden sonra bir satır sonu karakteri (\n) ekleyerek yeni bir satır oluşturur. Fonksiyon, verilen karakter dizisinin boş olup olmadığını kontrol eder ve eğer boş değilse önce ft_putstr_fd fonksiyonuyla karakter dizisini yazdırır, ardından bir satır sonu karakteri ekler. Sonuç olarak, bu fonksiyon belirtilen karakter dizisini belirtilen dosya tanımlayıcısına yazdırır ve ardından bir satır sonu karakteri ekler.
 </p>
+
+---
 
 - **ft_putnbr_fd**: Bir tam sayıyı belirtilen dosya tanımlayıcısına yazar.
   - Prototip: `void ft_putnbr_fd(int n, int fd);`
@@ -1087,6 +1151,8 @@ void	ft_putnbr_fd(int n, int fd)
 Bu fonksiyon, bir tamsayıyı (n) belirtilen dosya tanımlayıcısına (fd) yazdırmak için kullanılır. Fonksiyon, öncelikle tamsayının negatif olup olmadığını kontrol eder. Eğer negatifse, negatif işaretini yazdırır ve sayıyı pozitife dönüştürür. Daha sonra, sayının basamaklarını ayrı ayrı yazdırmak için bir döngü kullanır. Her basamak için, sayıyı 10'a böler ve kalanını ASCII karakterine dönüştürerek yazdırır. Bu işlem, sayının her basamağı için tekrarlanır ve sonunda tamsayı, belirtilen dosya tanımlayıcısına doğru biçimde yazdırılmış olur.
 </p>
 
+---
+
 - **ft_putchar_fd**: Bir karakteri belirtilen dosya tanımlayıcısına yazar.
   - Prototip: `void ft_putchar_fd(char c, int fd);`
   - `c`: Yazılacak karakter.
@@ -1103,6 +1169,8 @@ void	ft_putchar_fd(char c, int fd)
 <p align="left">
 Bu fonksiyon, bir karakteri (c) belirtilen dosya tanımlayıcısına (fd) yazdırmak için kullanılır. write fonksiyonu kullanılarak karakter belirtilen dosya tanımlayıcısına yazdırılır. Burada &c ifadesi, karakterin bellek adresine işaret eder ve 1 ise yazdırılacak byte sayısını temsil eder. Bu durumda, sadece bir karakterin yazdırılacağı belirtilmiştir.
 </p>
+
+---
 
 ### Liste işlemleri
 
@@ -1126,8 +1194,10 @@ t_list	*ft_lstnew(void *content)
 }
 ```
 <p align="left">
-
+Bu fonksiyon, yeni bir liste düğümü oluşturur. `ft_lstnew` fonksiyonu, bir içerik (`content`) alır ve bu içeriği tutan yeni bir düğüm oluşturur. Fonksiyon, yeni düğümü oluşturmak için bellek tahsisi yapar ve eğer tahsis başarılı olmazsa, `NULL` döner. Tahsis başarılı olursa, düğümün içeriği verilen `content` değeri ile doldurulur ve `next` işaretçisi `NULL` olarak ayarlanır, böylece düğüm, listenin sonuna eklenmeye hazır hale gelir.
 </p>
+
+---
 
 - **ft_lstadd_front**: Başa bir düğüm ekler.
   - Prototip: `void ft_lstadd_front(t_list **lst, t_list *new);`
@@ -1145,6 +1215,12 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	*lst = new;
 }
 ```
+
+<p align="left">
+Bu fonksiyon, bir listenin başına yeni bir düğüm ekler. `ft_lstadd_front` fonksiyonu, bir listenin işaretçisini (`lst`) ve eklenmek istenen düğümü (`new`) alır. Eğer `lst` veya `new` işaretçileri geçersizse (NULL), fonksiyon hiçbir işlem yapmadan döner. Aksi halde, yeni düğümün `next` işaretçisi mevcut listenin ilk düğümünü gösterecek şekilde ayarlanır ve ardından liste işaretçisi (`lst`), yeni düğümü gösterecek şekilde güncellenir. Böylece, yeni düğüm listenin başına eklenmiş olur.
+</p>
+
+---
 
 - **ft_lstsize**: Listenin eleman sayısını döndürür.
   - Prototip: `int ft_lstsize(t_list *lst);`
@@ -1167,6 +1243,12 @@ int	ft_lstsize(t_list *lst)
 }
 ```
 
+<p align="left">
+Bu fonksiyon, bir listenin eleman sayısını döndürür. `ft_lstsize` fonksiyonu, bir liste işaretçisini (`lst`) alır ve listenin elemanlarını saymak için bir döngü kullanır. Döngü, liste işaretçisi `NULL` olana kadar devam eder ve her adımda liste işaretçisi bir sonraki düğüme kaydırılır. Bu sırada bir sayaç (`counter`) artırılarak toplam eleman sayısı hesaplanır. Döngü tamamlandığında, sayaç değeri döndürülür ve bu değer, listenin eleman sayısını temsil eder.
+</p>
+
+---
+
 - **ft_lstlast**: Listenin son elemanını döndürür.
   - Prototip: `t_list *ft_lstlast(t_list *lst);`
   - `lst`: Son elemanın bulunacağı liste.
@@ -1186,8 +1268,10 @@ t_list	*ft_lstlast(t_list *lst)
 }
 ```
 <p align="left">
-
+Bu fonksiyon, bir listenin son elemanını döndürür. `ft_lstlast` fonksiyonu, bir liste işaretçisini (`lst`) alır ve listenin sonuna ulaşana kadar listeyi ilerletir. Eğer liste işaretçisi `NULL` ise, fonksiyon `0` döner. Liste işaretçisi geçerli bir düğümü gösteriyorsa, fonksiyon, son düğümün işaretçisini döner. Döngü, düğümün `next` işaretçisi `NULL` olana kadar devam eder ve son düğüm bulunduğunda, bu düğümün adresi döndürülür.
 </p>
+
+---
 
 - **ft_lstadd_back**: Sona bir düğüm ekler.
   - Prototip: `void ft_lstadd_back(t_list **lst, t_list *new);`
@@ -1211,6 +1295,12 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 }
 ```
 
+<p align="left">
+Bu fonksiyon, bir listenin sonuna yeni bir düğüm ekler. `ft_lstadd_back` fonksiyonu, bir liste işaretçisini (`lst`) ve eklenmek istenen düğümü (`new`) alır. Eğer liste zaten eleman içeriyorsa, `ft_lstlast` fonksiyonu kullanılarak listenin son düğümü bulunur ve bu düğümün `next` işaretçisi yeni düğümü gösterecek şekilde ayarlanır. Eğer liste boşsa (`*lst` işaretçisi `NULL` ise), yeni düğüm doğrudan listenin ilk düğümü olarak ayarlanır. Fonksiyon herhangi bir değer döndürmez.
+</p>
+
+---
+
 - **ft_lstdelone**: Belirli bir düğümü siler.
   - Prototip: `void ft_lstdelone(t_list *lst, void (*del)(void*));`
   - `lst`: Silinecek düğüm.
@@ -1230,6 +1320,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*))
 <p align="left">
 Bu fonksiyon, bir t_list düğümünü ve içeriğini silen işlevdir. İlk parametre olarak aldığı t_list düğümünün içeriğini ikinci parametre olarak aldığı silme işleviyle siler. Sonrasında düğümü ve içeriğini bellekten serbest bırakır.
 </p>
+
+---
 
 - **ft_lstclear**: Tüm listeyi siler.
   - Prototip: `void ft_lstclear(t_list **lst, void (*del)(void*));`
@@ -1252,9 +1344,12 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	}
 }
 ```
-<p align="left">
 
+<p align="left">
+Bu fonksiyon, bir listenin tüm düğümlerini siler ve belleği serbest bırakır. `ft_lstclear` fonksiyonu, bir liste işaretçisini (`lst`) ve düğüm içeriğini serbest bırakmak için kullanılan bir işlevi (`del`) alır. Döngü, listenin başından sonuna kadar ilerler, her düğüm için `ft_lstdelone` fonksiyonunu çağırarak düğümü siler ve belleği serbest bırakır. Her adımda, bir sonraki düğüme geçmeden önce mevcut düğüm silinir. Fonksiyon, işlem tamamlandığında hiçbir değer döndürmez.
 </p>
+
+---
 
 - **ft_lstiter**: Bir fonksiyonu her liste elemanı için çağırır.
   - Prototip: `void ft_lstiter(t_list *lst, void (*f)(void*));`
@@ -1274,8 +1369,10 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 }
 ```
 <p align="left">
-
+Bu fonksiyon, verilen bir işlevi (`f`), bir listedeki her düğümün içeriği üzerinde uygular. `ft_lstiter` fonksiyonu, bir liste işaretçisini (`lst`) alır ve liste boyunca iterasyon yapar. Her adımda, mevcut düğümün içeriği (`content`) işlev `f` kullanılarak işlenir. Döngü, listenin sonuna kadar devam eder ve işlem tamamlandığında hiçbir değer döndürmez.
 </p>
+
+---
 
 - **ft_lstmap**: Bir fonksiyonu her liste elemanı için çağırır ve yeni bir liste oluşturur.
   - Prototip: `t_list *ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*));`
@@ -1311,6 +1408,11 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	return (begin);
 }
 ```
+<p align="left">
+Bu fonksiyon, verilen bir işlevi (`f`) bir listedeki her düğümün içeriği üzerinde uygular ve bu işlevin sonucuyla yeni bir liste oluşturur. `ft_lstmap` fonksiyonu, bir kaynak liste (`lst`), her düğüm için çağrılacak bir işlev (`f`), ve eğer bir düğüm oluşturulurken hata oluşursa, düğüm içeriğini silmek için kullanılacak bir işlev (`del`) alır. Fonksiyon, kaynak liste boyunca iterasyon yapar, her düğümün içeriği üzerinde işlev `f`'i uygular ve yeni bir düğüm oluşturur. Eğer yeni bir düğüm oluşturulamazsa, fonksiyon, yeni listenin tüm düğümlerini temizler ve `NULL` döner. İşlem başarılı olursa, yeni listenin başının işaretçisini döndürür.
+</p>
+
+---
 
 ## Notlar
 
@@ -1319,25 +1421,35 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 Bu işlevler, genellikle bellek alanının manipülasyonu ve işlenmesi gereken durumlarda kullanılır. Örneğin, bir dizi içinde belirli bir değerin aranması, bellek alanının belirli bir değerle doldurulması veya bellek bloklarının karşılaştırılması gibi işlemlerde bu fonksiyonlara ihtiyaç duyulur.
 </p>
 
+---
+
 ### Dize İşlemleri Nedir?
 <p align="left">
 Dize işlemleri, metinsel verilerin manipülasyonu ve işlenmesi için kullanılan işlevlerdir. Bu işlevler, bir dizenin uzunluğunu hesaplamak, başka bir dizeye kopyalamak, bir dizeye yeni karakterler eklemek, belirli bir karakteri bir dizide aramak, alt dize aramak veya iki dizeyi karşılaştırmak gibi çeşitli işlemleri gerçekleştirir.
 </p>
+
+---
 
 ### Dosya İşlemleri Nedir?
 <p align="left">
 Dosya işlemleri, bir bilgisayar sistemindeki dosyalara erişmek ve bu dosyaları okumak, yazmak, oluşturmak, silmek veya değiştirmek için yapılan işlemleri ifade eder. Bu işlemler, genellikle dosyaların veri okuma ve yazma işlemlerini içerir ve dosya sistemine erişim sağlamak için kullanılır. Dosya işlemleri, programların verileri kalıcı olarak depolamak ve gerektiğinde erişmek için dosyaları kullanmasına olanak tanır.
 </p>
 
+---
+
 ### Karakter İşlemleri Nedir?
 <p align="left">
 Karakter işlemleri, genellikle bir karakterin belirli bir özelliğe sahip olup olmadığını kontrol etmek için kullanılan işlemlerdir. Örneğin, bir karakterin bir harf olup olmadığını, bir rakam olup olmadığını, bir yazdırılabilir karakter olup olmadığını veya bir ASCII karakteri olup olmadığını belirlemek gibi işlemleri içerir. Bu tür işlemler, genellikle karakter dizilerini veya kullanıcıdan alınan girdileri işlerken karakterlerin özelliklerini kontrol etmek için kullanılır.
 </p>
 
+---
+
 ### Liste İşlemleri Nedir?
 <p align="left">
 Liste işlemleri, verilerin düğüm adı verilen birimler halinde organize edilmesi ve işlenmesi için kullanılan işlevlerdir. Bu işlevler, bir veri yapısında yeni bir düğüm oluşturmak, düğüm eklemek, düğüm silmek, düğüm aramak, düğüm sayısını hesaplamak gibi çeşitli işlemleri gerçekleştirir.
 </p>
+
+---
 
 ### Malloc Nedir?
 <p align="left">
@@ -1368,10 +1480,14 @@ int main() {
 }
 ```
 
+---
+
 ### Calloc Nedir?
 <p align="left">
 calloc, bellek tahsis etmek için kullanılan bir işlevdir. "Calloc" kelimesi "continuous allocation" kelimelerinin kısaltmasıdır. calloc, bellek tahsis etmek için malloc işlevi gibi kullanılır, ancak farklı olarak ayrılan belleği sıfırlar, yani tüm byte'ları sıfır değeriyle doldurur.
 </p>
+
+---
 
 ### Type Casting (Tür Dönüşümü) Nedir?
 <p align="left">
@@ -1394,6 +1510,9 @@ int main() {
     return 0;
 }
 ```
+
+---
+
 ### Overlap (Çakışma) Durumu Nedir?
 <p align="left">
 Overlap, genellikle birbirini takip eden iki nesnenin veya olayın aynı alana veya sürece denk gelmesi durumunu ifade eder. Özellikle programlama bağlamında, overlap, bellek bloklarının veya veri yapılarının aynı bellek alanında veya aynı zaman aralığında yer alması durumunu ifade eder. Bu durum, bellek hataları, veri bütünlüğü sorunları veya beklenmedik davranışlara neden olabilir. Overlap durumları genellikle programların düzeltilmesi gereken hatalarını belirtir. Örnek Kod:
@@ -1430,6 +1549,9 @@ int main() {
 }
 
 ```
+
+---
+
 ### Static Nedir? 
 <p align="left">
 "static" kelimesi, bir değişkenin veya fonksiyonun programın çalışma süresi boyunca sabit bir bellek konumuna sahip olduğunu belirtmek için kullanılan bir anahtar kelimedir.
@@ -1441,10 +1563,14 @@ Bir değişken "static" olarak tanımlandığında, bu değişken global kapsamd
 Bir fonksiyon "static" olarak tanımlandığında, bu fonksiyon yalnızca tanımlandığı dosyanın içinde erişilebilir. Başka bir dosyadan bu fonksiyona erişilemez. Bu şekilde, fonksiyonun kapsamı sınırlanmış olur ve kodun daha modüler hale gelmesine yardımcı olur.
 </p>
 
+---
+
 ### size_t Nedir? 
 <p align="left">
 size_t, C ve C++ gibi dillerde kullanılan bir tamsayı türüdür. Bu tür, bellek adresleme ve dizi indeksleme gibi boyutları ifade etmek için genellikle kullanılır. Platforma bağlı olarak değişebilir ve genellikle en büyük adreslenebilir bellek miktarını temsil eder. Örneğin, bir dizinin boyutunu veya bir bellek bloğunun boyutunu temsil etmek için kullanılabilir. size_t, stddef.h başlık dosyasında tanımlanır.
 </p>
+
+---
 
 ### Open Fonksiyonu Nedir? 
 <p align="left">
@@ -1484,3 +1610,4 @@ Open onksiyonunda kullanılabilecek bayraklar şunlardır:
 - `O_EXCL`: Dosya varsa O_CREAT ile hata döndürür.
 Bu bayraklar `|` operatörüyle birleştirilerek aynı anda birden fazla bayrağın kullanılmasını sağlar. Örneğin, `O_RDONLY | O_CREAT` şeklinde kullanılabilir.
 
+---
