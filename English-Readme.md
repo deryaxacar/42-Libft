@@ -1,7 +1,7 @@
 ## Language Selection / Dil Seçimi
 
 - [English](#english)
-- [Türkçe](#turkish)
+- [Turkish](#turkish)
 
 ---
 
@@ -1663,7 +1663,7 @@ These flags can be combined using the `|` operator to use multiple flags simulta
 
 ---
 
-<h3 align="center">Türkçe</h3>
+<h3 align="center">Turkish</h3>
 
 ---
 
