@@ -1663,6 +1663,11 @@ These flags can be combined using the `|` operator to use multiple flags simulta
 
 ---
 
+This README file has been prepared by Derya ACAR.
+
+---
+
+
 <h3 align="center">Turkish</h3>
 
 ---
@@ -3295,3 +3300,4 @@ Bu bayraklar `|` operatörüyle birleştirilerek aynı anda birden fazla bayrağ
 
 ---
 
+Bu README dosyası Derya ACAR tarafından hazırlanmıştır.
