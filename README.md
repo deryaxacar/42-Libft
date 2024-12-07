@@ -18,7 +18,7 @@
 
 <!-- Project Logo or Visual -->
 <p align="center">
-  <a target="blank"><img src="https://i.hizliresim.com/ffa3w9y.png" height="150" width="150" /></a>
+  <a target="blank"><img src="https://github.com/deryaxacar/mg/blob/main/p-logo/libft.png" height="150" width="150" /></a>
 </p>
 
 ---
@@ -1683,7 +1683,7 @@ This README file has been prepared by Derya ACAR.
 
 <!-- Proje Logosu veya Görseli -->
 <p align="center">
-  <a target="blank"><img src="https://i.hizliresim.com/ffa3w9y.png" height="150" width="150" /></a>
+  <a target="blank"><img src="https://github.com/deryaxacar/mg/blob/main/p-logo/libft.png" height="150" width="150" /></a>
 </p>
 
 <!-- Proje Başlıkları ve İçindekiler -->
