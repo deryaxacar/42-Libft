@@ -18,7 +18,7 @@
 
 <!-- Project Logo or Visual -->
 <p align="center">
-  <a target="blank"><img src="https://camo.githubusercontent.com/4586de86700a564e0af666b425d09ced9a1e97e28ac7a8b002bf9a6ab6cdedda/68747470733a2f2f692e68697a6c69726573696d2e636f6d2f666661337739792e706e67" height="150" width="150" /></a>
+  <a target="blank"><img src="https://github.com/deryaxacar/42-Libft/blob/main/libft.png" height="150" width="150" /></a>
 </p>
 
 ---
@@ -1683,7 +1683,7 @@ This README file has been prepared by Derya ACAR.
 
 <!-- Proje Logosu veya Görseli -->
 <p align="center">
-  <a target="blank"><img src="https://camo.githubusercontent.com/4586de86700a564e0af666b425d09ced9a1e97e28ac7a8b002bf9a6ab6cdedda/68747470733a2f2f692e68697a6c69726573696d2e636f6d2f666661337739792e706e67" height="150" width="150" /></a>
+  <a target="blank"><img src="https://github.com/deryaxacar/42-Libft/blob/main/libft.png" height="150" width="150" /></a>
 </p>
 
 <!-- Proje Başlıkları ve İçindekiler -->
